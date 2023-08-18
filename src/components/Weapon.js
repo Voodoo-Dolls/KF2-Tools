@@ -1,14 +1,13 @@
 import weapons from '../data/weapons.json'
 import { useState } from 'react';
-const WeaponBlock = () => {
+const Weapon = (perk) => {
 
     // Weapon Object Set Up
-
-    //Get Weapon objects Based off of perk
+    //Get Weapon objects Based off of perk prop
     var weaponArray = weapons["weapon-list"].filter(function (weapon){
-        return weapon["Perks"].includes("Sharpshooter");
+        return weapon["Perks"].includes(perk["perk"]);
     });
-    var weapon = weaponArray;
+
 
     // Get an Array of Weapon names from Perk
     var weaponList = weaponArray.map((Arr)=>{
@@ -35,7 +34,7 @@ const WeaponBlock = () => {
 
     //Variables
     // States
-    const [weaponObject, setWeaponObject] = useState(weaponArray[0]); //Sets object as First weapon in array
+    const [weaponObject, setWeaponObject] = useState(null); //Sets object as First weapon in array
     const [weaponUpgrade, setWeaponUpgrade] = useState("Base")
     
     if(weaponObject){
@@ -47,15 +46,23 @@ const WeaponBlock = () => {
 
     return (  
         <>  
-            <p>Perk: Sharpshooter</p>
+            {/* Checks if Perk is Selected */}
+            {perk["perk"] &&
+            <>
+            <p>Perk: {perk["perk"]}</p>
             <p>Weapon:</p>
             <select name="weapon" id="wep" onChange={onWeaponSelect}>
+                <option value="null"></option>
                 {
                    weaponArray.map((weapon)=>(
                     <option value={weapon["weapon-name"]}>{weapon["weapon-name"]}</option>
                    ))
                 }
             </select>
+            
+            </>
+
+            }
             
             {
                 weaponObject &&
@@ -77,4 +84,4 @@ const WeaponBlock = () => {
     );
 }
  
-export default WeaponBlock;
+export default Weapon;

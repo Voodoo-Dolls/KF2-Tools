@@ -1,12 +1,12 @@
 import './App.css';
-import './components/WeaponCalculator'
-import WeaponCalculator from './components/WeaponCalculator';
+import './components/PlayerBlock'
+import PlayerBlock from './components/PlayerBlock';
 
 
 function App() {
   return (
     <>
-      <WeaponCalculator/>
+      <PlayerBlock/>
     </>
   )
 }
