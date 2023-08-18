@@ -22,13 +22,10 @@ const PlayerBlock = () => {
 
     return ( 
         <>  
-            <Perk handle={handlePerk} perk={perk}/>
+            <Perk handle={handlePerk} perk={perk} reset={reset}/>
             {!reset && 
             <Weapon perk={perk}/>
             }
-            {/* <p>Zed: {zedName}</p>
-            <p>Head Health: {headHealth}</p>
-            <p>Body Health: {bodyHealth}</p> */}
         </>
      );
 }

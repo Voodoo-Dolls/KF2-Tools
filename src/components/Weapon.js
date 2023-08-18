@@ -1,6 +1,9 @@
 import weapons from '../data/weapons.json'
 import { useState } from 'react';
 const Weapon = (perk) => {
+    // States
+    const [weaponObject, setWeaponObject] = useState(null); //Sets object as First weapon in array
+    const [weaponUpgrade, setWeaponUpgrade] = useState("Base")
 
     // Weapon Object Set Up
     //Get Weapon objects Based off of perk prop
@@ -23,7 +26,7 @@ const Weapon = (perk) => {
                 return weapon["weapon-name"] === value;
             })
             setWeaponObject(weaponArray[index]);
-
+            setWeaponUpgrade("Base");
         }
     }
 
@@ -33,9 +36,6 @@ const Weapon = (perk) => {
     }
 
     //Variables
-    // States
-    const [weaponObject, setWeaponObject] = useState(null); //Sets object as First weapon in array
-    const [weaponUpgrade, setWeaponUpgrade] = useState("Base")
     
     if(weaponObject){
         var weaponName = weaponObject['weapon-name'];
@@ -49,7 +49,6 @@ const Weapon = (perk) => {
             {/* Checks if Perk is Selected */}
             {perk["perk"] &&
             <>
-            <p>Perk: {perk["perk"]}</p>
             <p>Weapon:</p>
             <select name="weapon" id="wep" onChange={onWeaponSelect}>
                 <option value="null"></option>
