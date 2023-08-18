@@ -1,0 +1,26 @@
+{
+
+    "weapon-list":[{
+        "weapon-name": "M14 EBR",
+        "damage/w": {
+            "Base": [80, 7],
+            "+1":[103, 8],
+            "+2":[104, 9]
+        },
+        "damage-type":"Rifle",
+        "Perks":["Sharpshooter", "Survivalist"]
+    },
+    {
+        "weapon-name": "SPX",
+        "damage/w":{
+            "Base":[165, 5],
+            "+1":[189, 6],
+            "+2":[214, 7],
+            "+3":[239, 8]
+        },
+        "damage-type": "Rifle",
+        "Perks":["Sharpshooter","Survivalist", "Gunslinger"]
+    }
+
+    ]
+}

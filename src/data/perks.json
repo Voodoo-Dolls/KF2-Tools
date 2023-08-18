@@ -1,0 +1,60 @@
+{
+    "perk-list":[
+        {
+            "perk-name":"Sharpshooter",
+            "Skills":{
+                "Lvl-5":{
+                    "left":{
+                        "skill-name":"Sniper",
+                        "damage-modifier":0.25
+                    },
+                    "right":{
+                        "skill-name":"Marksman",
+                        "damage-modifier": 0
+                    }
+                },
+                "lvl-10":{
+                    "left":{
+                        "skill-name":"Stability",
+                        "damage-modifier": 0.3
+                    },
+                    "right":{
+                        "skill-name":"Ballistic Shock",
+                        "damage-modifier": 0
+                    }
+                },
+                "lvl-15":{
+                    "left":{
+                        "skill-name":"Rack 'em Up",
+                        "damage-modifier": 0.5
+                    },
+                    "right":{
+                        "skill-name":"Tactical Reload",
+                        "damage-modifier": 0
+                    }
+                },
+                "lvl-20":{
+                    "left":{
+                        "skill-name": "Dead Eye",
+                        "damage-modifier": 0.1
+                    },
+                    "right":{
+                        "skill-name": "Always Prepared",
+                        "damage-modifier": 0
+                    }
+                },
+                "lvl-25":{
+                    "left":{
+                        "skill-name": "Asssasin",
+                        "damage-modifier": 0.35
+                    },
+                    "right":{
+                        "skill-name": "Ranger",
+                        "damage-modifier": 0
+                    }
+                }
+            },
+            "damage-bonus": 0.25
+        }
+    ]
+}
