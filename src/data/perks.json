@@ -13,7 +13,7 @@
                         "damage-modifier": 0
                     }
                 },
-                "lvl-10":{
+                "Lvl-10":{
                     "left":{
                         "skill-name":"Stability",
                         "damage-modifier": 0.3
@@ -23,7 +23,7 @@
                         "damage-modifier": 0
                     }
                 },
-                "lvl-15":{
+                "Lvl-15":{
                     "left":{
                         "skill-name":"Rack 'em Up",
                         "damage-modifier": 0.5
@@ -33,7 +33,7 @@
                         "damage-modifier": 0
                     }
                 },
-                "lvl-20":{
+                "Lvl-20":{
                     "left":{
                         "skill-name": "Dead Eye",
                         "damage-modifier": 0.1
@@ -43,7 +43,7 @@
                         "damage-modifier": 0
                     }
                 },
-                "lvl-25":{
+                "Lvl-25":{
                     "left":{
                         "skill-name": "Asssasin",
                         "damage-modifier": 0.35

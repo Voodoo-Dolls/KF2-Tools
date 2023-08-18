@@ -20,6 +20,16 @@
         },
         "damage-type": "Rifle",
         "Perks":["Sharpshooter","Survivalist", "Gunslinger"]
+    },
+    {
+        "weapon-name": "Deagle",
+        "damage/w":{
+            "Base":[91, 2],
+            "+1":[113,3],
+            "+2":[127,4]
+        },
+        "damage-type":"Pistol",
+        "Perks":["Gunsliner"]
     }
 
     ]

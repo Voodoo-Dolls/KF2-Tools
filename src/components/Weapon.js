@@ -2,7 +2,7 @@ import weapons from '../data/weapons.json'
 import { useState } from 'react';
 const Weapon = (perk) => {
     // States
-    const [weaponObject, setWeaponObject] = useState(null); //Sets object as First weapon in array
+    const [weaponObject, setWeaponObject] = useState(null); 
     const [weaponUpgrade, setWeaponUpgrade] = useState("Base")
 
     // Weapon Object Set Up
@@ -38,7 +38,6 @@ const Weapon = (perk) => {
     //Variables
     
     if(weaponObject){
-        var weaponName = weaponObject['weapon-name'];
         var weaponDamage = weaponObject["damage/w"][weaponUpgrade][0];
         var weaponType = weaponObject["damage-type"];
 
@@ -54,7 +53,7 @@ const Weapon = (perk) => {
                 <option value="null"></option>
                 {
                    weaponArray.map((weapon)=>(
-                    <option value={weapon["weapon-name"]}>{weapon["weapon-name"]}</option>
+                    <option value={weapon["weapon-name"]} key={weapon["weapon-name"]}>{weapon["weapon-name"]}</option>
                    ))
                 }
             </select>
@@ -70,7 +69,7 @@ const Weapon = (perk) => {
                     <select name="" id="" onChange={onUpgradeSelect}>
                         {
                             Object.keys(weaponObject["damage/w"]).map((key)=>(
-                                <option value={key}>{key}</option>
+                                <option value={key} key={key}>{key}</option>
                             ))
                         }
                     </select>  

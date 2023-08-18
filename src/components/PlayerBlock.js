@@ -5,7 +5,7 @@ import Weapon from './Weapon';
 
 
 
-const PlayerBlock = () => {
+const PlayerBlock = (perkBonus, {setPerkBonus}) => {
     const [perk, setPerk] = useState(null);
     const [reset, setReset] = useState(false);
     function handlePerk(event){
@@ -13,19 +13,23 @@ const PlayerBlock = () => {
         setPerk(value);
         if (!value){
             setReset(true);
+            return;
         }
         else{
             setReset(false);
+            return;
         }
         
     }
 
     return ( 
         <>  
-            <Perk handle={handlePerk} perk={perk} reset={reset}/>
+            <p>Current Perk BonusPlayerBlock: {perkBonus["perkBonus"]}</p>
+            <Perk handle={handlePerk} perk={perk} reset={reset} perkBonus={perkBonus["perkBonus"]} setPerkBonus={{setPerkBonus}}/>
             {!reset && 
             <Weapon perk={perk}/>
             }
+            
         </>
      );
 }

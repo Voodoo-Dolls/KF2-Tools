@@ -1,12 +1,12 @@
 import './App.css';
-import './components/PlayerBlock'
-import PlayerBlock from './components/PlayerBlock';
+import './components/DamageCalculator'
+import DamageCalculator from './components/DamageCalculator'; 
 
 
 function App() {
   return (
     <>
-      <PlayerBlock/>
+      <DamageCalculator/>
     </>
   )
 }
