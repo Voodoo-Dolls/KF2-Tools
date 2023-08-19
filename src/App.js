@@ -1,14 +1,13 @@
-import './App.css';
-import './components/DamageCalculator'
-import DamageCalculator from './components/DamageCalculator'; 
-
+import "./App.css";
+import "./components/DamageCalculator";
+import DamageCalculator from "./components/DamageCalculator";
 
 function App() {
   return (
     <>
-      <DamageCalculator/>
+      <DamageCalculator />
     </>
-  )
+  );
 }
 
 export default App;

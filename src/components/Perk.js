@@ -1,7 +1,7 @@
 import perks from "../data/perks.json";
 import { useState } from "react";
 
-const Perk = ({ handle }, perkBonus) => {
+const Perk = ({ handle }) => {
   //States
   const [perkObject, setPerkObject] = useState(null);
   const [perkState, setPerkState] = useState(null);
@@ -36,7 +36,7 @@ const Perk = ({ handle }, perkBonus) => {
   }
   return (
     <>
-      <p>Current Perk Bonus Perk Block: {perkBonus["perkBonus"]}</p>
+      {/* <p>Current Perk Bonus Perk Block: {perkBonus["perkBonus"]}</p> */}
       <p>Perk:{perkObject && perkObject["perk-name"]} </p>
       <select name="" id="" onChange={perkChangeHandle}>
         <option value={null}></option>
