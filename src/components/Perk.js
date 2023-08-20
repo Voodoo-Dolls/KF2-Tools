@@ -1,43 +1,62 @@
+import { useDispatch, useSelector } from "react-redux";
 import perks from "../data/perks.json";
 import { useState } from "react";
+import { setPerkName, setPerkBonus, setPerkLevel } from "../features/perk";
 
-const Perk = ({ handle }) => {
+const Perk = () => {
+  //Redux
+  const { perkName, perkLevel } = useSelector((state) => state.perk);
+  const dispatch = useDispatch();
+
   //States
   const [perkObject, setPerkObject] = useState(null);
-  const [perkState, setPerkState] = useState(null);
-  const [skillBonus, setSkillBonus] = useState(0);
-  //Handles
-  function perkChangeHandle(event) {
-    handle(event);
-    const value = event.target.value;
 
+  //Handles
+  function perkChangeHandle(e) {
+    const value = e.target.value;
+    dispatch(setPerkName(value));
     if (value) {
-      setPerkState(true);
-      setPerkObject(perkArray[0]);
-      return;
+      dispatch(setPerkBonus(0));
+      setPerkObject(perkArray.filter((perk) => perk["perk-name"] === value)[0]);
     } else {
-      setPerkState(false);
-      setPerkObject(null);
-      return;
+      dispatch(setPerkBonus(0));
+      setPerkObject(value);
     }
+    skillObject = {
+      "Lvl-5": 0,
+      "Lvl-10": 0,
+      "Lvl-15": 0,
+      "Lvl-20": 0,
+      "Lvl-25": 0,
+    };
   }
   //Data
   const perkArray = perks["perk-list"];
 
-  function handleSkillChange(event) {
-    const id = event.target.id;
-    const value = event.target.value;
+  // Events
+  function handleSkillChange(e) {
+    const id = e.target.id;
+    const value = e.target.value;
     skillObject[id] = +value;
-    setSkillBonus(
-      Object.keys(skillObject)
-        .map((lvl) => skillObject[lvl])
-        .reduce((pv, cv) => pv + cv, 0)
+    dispatch(
+      setPerkBonus(
+        Object.keys(skillObject)
+          .map((lvl) => skillObject[lvl])
+          .reduce((pv, cv) => pv + cv, 0) +
+          perkLevel * perkObject["perk-level-bonus"]
+      )
     );
   }
+
+  // function handleLvlChange(e) {
+  //   const value = e.target.value;
+  //   dispatch(setPerkLevel(value));
+  // }
+
+  // JSX
   return (
     <>
-      {/* <p>Current Perk Bonus Perk Block: {perkBonus["perkBonus"]}</p> */}
-      <p>Perk:{perkObject && perkObject["perk-name"]} </p>
+      <p>Perk: </p>
       <select name="" id="" onChange={perkChangeHandle}>
         <option value={null}></option>
         {perkArray.map((perk) => (
@@ -46,8 +65,23 @@ const Perk = ({ handle }) => {
           </option>
         ))}
       </select>
+      {/* Old Level Code */}
+      {/* {perkName && (
+        <>
+          <p>Level:</p>
+          <input
+            type="number"
+            onChange={handleLvlChange}
+            min={1}
+            max={25}
+            step={1}
+            value={perkLevel}
+            maxLength={3}
+          />
+        </>
+      )} */}
 
-      {perkState &&
+      {perkName &&
         Object.keys(perkObject["Skills"]).map((lvl) => (
           <div key={"skill" + lvl}>
             <p>{lvl}</p>
@@ -65,6 +99,9 @@ const Perk = ({ handle }) => {
               <option
                 value={perkObject["Skills"][lvl]["right"]["damage-modifier"]}
                 key={perkObject["Skills"][lvl]["right"]["skill-name"]}
+                defaultValue={
+                  perkObject["Skills"][lvl]["right"]["damage-modifier"]
+                }
               >
                 {perkObject["Skills"][lvl]["right"]["skill-name"]}
               </option>

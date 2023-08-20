@@ -1,14 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  value: 0,
-};
-
 export const perkSlice = createSlice({
   name: "perk",
   initialState: {
     perkName: null,
     perkBonus: 0,
+    perkLevel: 25,
   },
   reducers: {
     setPerkName: (state, action) => {
@@ -18,10 +15,13 @@ export const perkSlice = createSlice({
     setPerkBonus: (state, action) => {
       state.perkBonus = action.payload;
     },
+    setPerkLevel: (state, action) => {
+      state.perkLevel = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setPerkName, setPerkBonus } = perkSlice.actions;
+export const { setPerkName, setPerkBonus, setPerkLevel } = perkSlice.actions;
 
 export default perkSlice.reducer;

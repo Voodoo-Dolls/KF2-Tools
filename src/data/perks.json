@@ -54,7 +54,63 @@
                     }
                 }
             },
-            "damage-bonus": 0.25
+            "perk-level-bonus": 0.01
+        },
+        {
+            "perk-name":"Gunslinger",
+            "Skills":{
+                "Lvl-5":{
+                    "left":{
+                        "skill-name": "Steady",
+                        "damage-modifier": 0.075
+                    },
+                    "right":{
+                        "skill-name": "Quick Draw",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-10":{
+                    "left":{
+                        "skill-name": "Rack 'em Up",
+                        "damage-modifier": 0.5
+                    },
+                    "right":{
+                        "skill-name": "Bone Breaker",
+                        "damage-modifier": 0.2
+                    }
+                },
+                "Lvl-15":{
+                    "left":{
+                        "skill-name": "Line 'em Up",
+                        "damage-modifier": 0
+                    },
+                    "right":{
+                        "skill-name": "Speedloader",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-20":{
+                    "left":{
+                        "skill-name": "Skullcracker",
+                        "damage-modifier": 0
+                    },
+                    "right":{
+                        "skill-name":"Knock 'em Down",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-25":{
+                    "left":{
+                        "skill-name": "Whirlwind of Lead",
+                        "damage-modifier": 0
+                    },
+                    "right":{
+                        "skill-name": "Fan Fire",
+                        "damage-modifier": 0
+                    }
+                }
+            },
+            "perk-level-bonus":0.01
         }
         
     ]
