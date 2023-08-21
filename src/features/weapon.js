@@ -7,12 +7,12 @@ export const weaponSlice = createSlice({
     weaponDamage: 0,
     weaponUpgrade: "Base",
     weaponType: null,
+    weaponList: null
   },
   reducers: {
     setWeaponName: (state, action) => {
       state.weaponName = action.payload;
     },
-
     setWeaponDamage: (state, action) => {
       state.weaponDamage = action.payload;
     },
@@ -22,6 +22,9 @@ export const weaponSlice = createSlice({
     setWeaponType: (state, action) => {
       state.weaponType = action.payload;
     },
+    setWeaponList: (state, action) =>{
+      state.weaponList = action.payload;
+    }
   },
 });
 
@@ -31,6 +34,7 @@ export const {
   setWeaponDamage,
   setWeaponUpgrade,
   setWeaponType,
+  setWeaponList
 } = weaponSlice.actions;
 
 export default weaponSlice.reducer;

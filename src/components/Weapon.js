@@ -5,55 +5,50 @@ import {
   setWeaponName,
   setWeaponDamage,
   setWeaponType,
+  setWeaponUpgrade
 } from "../features/weapon";
 const Weapon = () => {
   // Redux
-  const { perkName } = useSelector((state) => state.perk);
+  const { perkName, perkWeapons } = useSelector((state) => state.perk);
   const dispatch = useDispatch();
-  const { weaponName, weaponDamage, weaponType } = useSelector(
+  const { weaponName, weaponDamage, weaponType, weaponUpgrade } = useSelector(
     (state) => state.weapon
   );
   // States
   const [weaponObject, setWeaponObject] = useState(null);
-  const [weaponUpgrade, setWeaponUpgrade] = useState("Base");
 
-  // Weapon Object Set Up
-  //Get Weapon objects Based off of perk prop
-  var weaponArray = weapons["weapon-list"].filter(function (weapon) {
-    return weapon["Perks"].includes(perkName);
-  });
-
-  // Get an Array of Weapon names from Perk
-  var weaponList = weaponArray.map((Arr) => {
-    return Arr["weapon-name"];
-  });
-
-  //Select Event Handler
 
   const onWeaponSelect = (event) => {
     const value = event.target.value;
     if (value) {
-      let index = weaponArray.findIndex((weapon) => {
+      if (value){
+        console.log("No value");
+      }
+      setWeaponObject(perkWeapons[perkWeapons.findIndex((weapon)=>{
         return weapon["weapon-name"] === value;
-      });
-      setWeaponObject(weaponArray[index]);
-      setWeaponUpgrade("Base");
+      })]);
+      dispatch(setWeaponDamage(perkWeapons[perkWeapons.findIndex((weapon)=>{
+        return weapon["weapon-name"] === value;
+      })]["damage/w"]["Base"][0]));
       dispatch(setWeaponUpgrade("Base"));
       dispatch(setWeaponName(value));
+      console.log(value);
+      return;
     }
   };
 
   const onUpgradeSelect = (event) => {
     const value = event.target.value;
-    setWeaponUpgrade(value);
+    dispatch(setWeaponUpgrade(value));
   };
 
   //Variables
 
-  if (weaponObject) {
-    dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
-    dispatch(setWeaponType(weaponObject["damage-type"]));
-  }
+  // if (weaponObject) {
+  //   dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
+  //   dispatch(setWeaponType(weaponObject["damage-type"]));
+  //   console.log('hello');
+  // }
 
   // setWeaponObject(weaponArray[index]);
   // dispatch(setWeaponUpgrade("+1"));
@@ -68,7 +63,7 @@ const Weapon = () => {
           <p>Weapon:</p>
           <select name="weapon" id="wep" onChange={onWeaponSelect}>
             <option value="null"></option>
-            {weaponArray.map((weapon) => (
+            {perkWeapons.map((weapon) => (
               <option value={weapon["weapon-name"]} key={weapon["weapon-name"]}>
                 {weapon["weapon-name"]}
               </option>
@@ -77,7 +72,7 @@ const Weapon = () => {
         </>
       )}
 
-      {weaponObject && (
+      {(weaponObject && weaponUpgrade && perkName && weaponName) && (
         <>
           <p>Weapon Upgrade: {weaponUpgrade}</p>
           <select name="" id="" onChange={onUpgradeSelect}>

@@ -18,16 +18,17 @@ const DamageCalculator = () => {
 
   return (
     <>
-      <p>Redux Perk Name: {perkName}</p>
+      {/* <p>Redux Perk Name: {perkName}</p>
       <p>Redux Perk Bonus: {perkBonus}</p>
-      <p>Redux Perk Level: {perkLevel}</p>
+      <p>Redux Perk Level: {perkLevel}</p> */}
       <p>Redux Weapon Name: {weaponName}</p>
+      <p>Redux Weapon Upgrade: {weaponUpgrade}</p>
       <p>Redux Weapon Damage: {weaponDamage}</p>
       <p>Redux Weapon Type: {weaponType}</p>
 
       <p>Redux Zed Name: {zedName}</p>
       <PlayerBlock />
-      <ZedBlock />
+      {/* <ZedBlock /> */}
     </>
   );
 };

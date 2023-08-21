@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import perks from "../data/perks.json";
 import { useState } from "react";
-import { setPerkName, setPerkBonus, setPerkLevel } from "../features/perk";
+import { setPerkName, setPerkBonus, setPerkWeapons } from "../features/perk";
+import {setWeaponName, setWeaponUpgrade} from "../features/weapon";
+import weapons from "../data/weapons.json"
 
 const Perk = () => {
   //Redux
@@ -11,13 +13,18 @@ const Perk = () => {
   //States
   const [perkObject, setPerkObject] = useState(null);
 
+
+
   //Handles
   function perkChangeHandle(e) {
     const value = e.target.value;
     dispatch(setPerkName(value));
     if (value) {
       dispatch(setPerkBonus(0));
+      dispatch(setPerkWeapons(value));
       setPerkObject(perkArray.filter((perk) => perk["perk-name"] === value)[0]);
+
+
     } else {
       dispatch(setPerkBonus(0));
       setPerkObject(value);
@@ -29,6 +36,8 @@ const Perk = () => {
       "Lvl-20": 0,
       "Lvl-25": 0,
     };
+    dispatch(setWeaponName(null));
+    dispatch(setWeaponUpgrade("Base"));
   }
   //Data
   const perkArray = perks["perk-list"];
