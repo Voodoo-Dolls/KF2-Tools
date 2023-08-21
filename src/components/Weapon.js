@@ -1,9 +1,18 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import weapons from "../data/weapons.json";
 import { useState } from "react";
+import {
+  setWeaponName,
+  setWeaponDamage,
+  setWeaponType,
+} from "../features/weapon";
 const Weapon = () => {
   // Redux
   const { perkName } = useSelector((state) => state.perk);
+  const dispatch = useDispatch();
+  const { weaponName, weaponDamage, weaponType } = useSelector(
+    (state) => state.weapon
+  );
   // States
   const [weaponObject, setWeaponObject] = useState(null);
   const [weaponUpgrade, setWeaponUpgrade] = useState("Base");
@@ -29,6 +38,8 @@ const Weapon = () => {
       });
       setWeaponObject(weaponArray[index]);
       setWeaponUpgrade("Base");
+      dispatch(setWeaponUpgrade("Base"));
+      dispatch(setWeaponName(value));
     }
   };
 
@@ -40,9 +51,14 @@ const Weapon = () => {
   //Variables
 
   if (weaponObject) {
-    var weaponDamage = weaponObject["damage/w"][weaponUpgrade][0];
-    var weaponType = weaponObject["damage-type"];
+    dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
+    dispatch(setWeaponType(weaponObject["damage-type"]));
   }
+
+  // setWeaponObject(weaponArray[index]);
+  // dispatch(setWeaponUpgrade("+1"));
+  // dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
+  // dispatch(setWeaponType(weaponObject["damage-type"]));
 
   return (
     <>
