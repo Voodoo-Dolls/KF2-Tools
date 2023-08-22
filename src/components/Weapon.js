@@ -1,45 +1,51 @@
 import { useSelector, useDispatch } from "react-redux";
 import weapons from "../data/weapons.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   setWeaponName,
   setWeaponDamage,
   setWeaponType,
-  setWeaponUpgrade
+  setWeaponUpgrade,
+  setWeaponObject,
 } from "../features/weapon";
 const Weapon = () => {
   // Redux
   const { perkName, perkWeapons } = useSelector((state) => state.perk);
   const dispatch = useDispatch();
-  const { weaponName, weaponDamage, weaponType, weaponUpgrade } = useSelector(
-    (state) => state.weapon
-  );
+  const { weaponName, weaponDamage, weaponType, weaponUpgrade, weaponObject } =
+    useSelector((state) => state.weapon);
   // States
-  const [weaponObject, setWeaponObject] = useState(null);
-
 
   const onWeaponSelect = (event) => {
     const value = event.target.value;
     if (value) {
-      if (value){
-        console.log("No value");
-      }
-      setWeaponObject(perkWeapons[perkWeapons.findIndex((weapon)=>{
-        return weapon["weapon-name"] === value;
-      })]);
-      dispatch(setWeaponDamage(perkWeapons[perkWeapons.findIndex((weapon)=>{
-        return weapon["weapon-name"] === value;
-      })]["damage/w"]["Base"][0]));
+      dispatch(
+        setWeaponObject(
+          perkWeapons[
+            perkWeapons.findIndex((weapon) => weapon["weapon-name"] === value)
+          ]
+        )
+      );
+
       dispatch(setWeaponUpgrade("Base"));
-      dispatch(setWeaponName(value));
-      console.log(value);
-      return;
     }
   };
+
+  useEffect(() => {
+    if (weaponObject) {
+      dispatch(setWeaponDamage(weaponObject["damage/w"]["Base"][0]));
+      console.log(weaponObject);
+    } else {
+      dispatch(setWeaponDamage(null));
+      dispatch(setWeaponUpgrade(null));
+      dispatch(setWeaponUpgrade(null));
+    }
+  }, [weaponObject]);
 
   const onUpgradeSelect = (event) => {
     const value = event.target.value;
     dispatch(setWeaponUpgrade(value));
+    dispatch(setWeaponDamage(weaponObject["damage/w"][value][0]));
   };
 
   //Variables
@@ -72,7 +78,7 @@ const Weapon = () => {
         </>
       )}
 
-      {(weaponObject && weaponUpgrade && perkName && weaponName) && (
+      {weaponObject && (
         <>
           <p>Weapon Upgrade: {weaponUpgrade}</p>
           <select name="" id="" onChange={onUpgradeSelect}>

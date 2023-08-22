@@ -18,9 +18,9 @@ const DamageCalculator = () => {
 
   return (
     <>
-      {/* <p>Redux Perk Name: {perkName}</p>
+      <p>Redux Perk Name: {perkName}</p>
       <p>Redux Perk Bonus: {perkBonus}</p>
-      <p>Redux Perk Level: {perkLevel}</p> */}
+      <p>Redux Perk Level: {perkLevel}</p>
       <p>Redux Weapon Name: {weaponName}</p>
       <p>Redux Weapon Upgrade: {weaponUpgrade}</p>
       <p>Redux Weapon Damage: {weaponDamage}</p>

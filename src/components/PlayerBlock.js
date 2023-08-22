@@ -7,7 +7,7 @@ const PlayerBlock = () => {
   return (
     <>
       <Perk />
-      <Weapon />
+      {/* <Weapon /> */}
     </>
   );
 };

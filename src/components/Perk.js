@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import perks from "../data/perks.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { setPerkName, setPerkBonus, setPerkWeapons } from "../features/perk";
-import {setWeaponName, setWeaponUpgrade} from "../features/weapon";
-import weapons from "../data/weapons.json"
+import { setWeaponName, setWeaponUpgrade } from "../features/weapon";
 
 const Perk = () => {
   //Redux
@@ -13,8 +12,6 @@ const Perk = () => {
   //States
   const [perkObject, setPerkObject] = useState(null);
 
-
-
   //Handles
   function perkChangeHandle(e) {
     const value = e.target.value;
@@ -23,8 +20,6 @@ const Perk = () => {
       dispatch(setPerkBonus(0));
       dispatch(setPerkWeapons(value));
       setPerkObject(perkArray.filter((perk) => perk["perk-name"] === value)[0]);
-
-
     } else {
       dispatch(setPerkBonus(0));
       setPerkObject(value);
@@ -36,9 +31,12 @@ const Perk = () => {
       "Lvl-20": 0,
       "Lvl-25": 0,
     };
-    dispatch(setWeaponName(null));
-    dispatch(setWeaponUpgrade("Base"));
+    dispatch(setWeaponUpgrade("+5"));
   }
+
+  useEffect(() => {
+    console.log(perkObject);
+  }, [perkObject]);
   //Data
   const perkArray = perks["perk-list"];
 
@@ -57,11 +55,6 @@ const Perk = () => {
     );
   }
 
-  // function handleLvlChange(e) {
-  //   const value = e.target.value;
-  //   dispatch(setPerkLevel(value));
-  // }
-
   // JSX
   return (
     <>
@@ -74,21 +67,6 @@ const Perk = () => {
           </option>
         ))}
       </select>
-      {/* Old Level Code */}
-      {/* {perkName && (
-        <>
-          <p>Level:</p>
-          <input
-            type="number"
-            onChange={handleLvlChange}
-            min={1}
-            max={25}
-            step={1}
-            value={perkLevel}
-            maxLength={3}
-          />
-        </>
-      )} */}
 
       {perkName &&
         Object.keys(perkObject["Skills"]).map((lvl) => (
