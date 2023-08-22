@@ -11,6 +11,7 @@ import {
 const Perk = () => {
   //Redux
   const { perkName, perkLevel } = useSelector((state) => state.perk);
+  const { weaponName } = useSelector((state) => state.perk);
   const dispatch = useDispatch();
 
   //States
@@ -36,6 +37,14 @@ const Perk = () => {
       "Lvl-25": 0,
     };
   }
+
+  useEffect(() => {
+    if (perkObject) {
+      if (weaponName) {
+        console.log("hello");
+      }
+    }
+  }, [perkObject]);
 
   //Data
   const perkArray = perks["perk-list"];
