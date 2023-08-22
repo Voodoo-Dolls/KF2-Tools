@@ -37,9 +37,6 @@ const Perk = () => {
     };
   }
 
-  useEffect(() => {
-    console.log(perkObject);
-  }, [perkObject]);
   //Data
   const perkArray = perks["perk-list"];
 

@@ -14,11 +14,12 @@ const Weapon = () => {
   const dispatch = useDispatch();
   const { weaponName, weaponDamage, weaponType, weaponUpgrade, weaponObject } =
     useSelector((state) => state.weapon);
-  // States
 
+  //Handles
   const onWeaponSelect = (event) => {
     const value = event.target.value;
     if (value) {
+      dispatch(setWeaponName(value));
       dispatch(
         setWeaponObject(
           perkWeapons[
@@ -26,18 +27,22 @@ const Weapon = () => {
           ]
         )
       );
-
-      dispatch(setWeaponUpgrade("Base"));
     }
   };
 
   useEffect(() => {
-    if (weaponObject) {
+    if (weaponObject && weaponUpgrade === null) {
+      dispatch(setWeaponUpgrade("Base"));
       dispatch(setWeaponDamage(weaponObject["damage/w"]["Base"][0]));
-      console.log(weaponObject);
+    } else if (weaponObject && weaponUpgrade != null) {
+      try {
+        dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
+      } catch {
+        dispatch(setWeaponUpgrade("Base"));
+        dispatch(setWeaponDamage(weaponObject["damage/w"]["Base"][0]));
+      }
     } else {
       dispatch(setWeaponDamage(null));
-      dispatch(setWeaponUpgrade(null));
       dispatch(setWeaponUpgrade(null));
     }
   }, [weaponObject]);
@@ -47,19 +52,6 @@ const Weapon = () => {
     dispatch(setWeaponUpgrade(value));
     dispatch(setWeaponDamage(weaponObject["damage/w"][value][0]));
   };
-
-  //Variables
-
-  // if (weaponObject) {
-  //   dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
-  //   dispatch(setWeaponType(weaponObject["damage-type"]));
-  //   console.log('hello');
-  // }
-
-  // setWeaponObject(weaponArray[index]);
-  // dispatch(setWeaponUpgrade("+1"));
-  // dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
-  // dispatch(setWeaponType(weaponObject["damage-type"]));
 
   return (
     <>
