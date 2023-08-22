@@ -31,7 +31,6 @@ const Perk = () => {
       "Lvl-20": 0,
       "Lvl-25": 0,
     };
-    dispatch(setWeaponUpgrade("+5"));
   }
 
   useEffect(() => {

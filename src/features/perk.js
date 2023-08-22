@@ -4,7 +4,7 @@ import weapons from "../data/weapons.json";
 export const perkSlice = createSlice({
   name: "perk",
   initialState: {
-    perkName: "asd",
+    perkName: null,
     perkBonus: 0,
     perkLevel: 25,
     perkWeapons: null,
