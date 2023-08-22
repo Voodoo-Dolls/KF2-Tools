@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import perks from "../data/perks.json";
 import { useState, useEffect } from "react";
 import { setPerkName, setPerkBonus, setPerkWeapons } from "../features/perk";
+import weapons from "../data/weapons.json";
 import {
   setWeaponName,
   setWeaponUpgrade,
@@ -10,8 +11,10 @@ import {
 
 const Perk = () => {
   //Redux
-  const { perkName, perkLevel } = useSelector((state) => state.perk);
-  const { weaponName } = useSelector((state) => state.perk);
+  const { perkName, perkLevel, perkWeapons } = useSelector(
+    (state) => state.perk
+  );
+  const { weaponName } = useSelector((state) => state.weapon);
   const dispatch = useDispatch();
 
   //States
@@ -40,8 +43,8 @@ const Perk = () => {
 
   useEffect(() => {
     if (perkObject) {
-      if (weaponName) {
-        console.log("hello");
+      if (!perkWeapons.some((weapon) => weapon["weapon-name"] === weaponName)) {
+        dispatch(setWeaponObject(null));
       }
     }
   }, [perkObject]);
