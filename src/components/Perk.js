@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import perks from "../data/perks.json";
 import { useState, useEffect } from "react";
 import { setPerkName, setPerkBonus, setPerkWeapons } from "../features/perk";
-import { setWeaponName, setWeaponUpgrade } from "../features/weapon";
+import {
+  setWeaponName,
+  setWeaponUpgrade,
+  setWeaponObject,
+} from "../features/weapon";
 
 const Perk = () => {
   //Redux
