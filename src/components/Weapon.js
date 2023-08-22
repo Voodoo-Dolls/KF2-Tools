@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import weapons from "../data/weapons.json";
+
 import { useState, useEffect } from "react";
 import {
   setWeaponName,
@@ -30,20 +30,26 @@ const Weapon = () => {
     }
   };
 
+  // AFTER WEAPON SELECTION
   useEffect(() => {
     if (weaponObject && weaponUpgrade === null) {
       dispatch(setWeaponUpgrade("Base"));
       dispatch(setWeaponDamage(weaponObject["damage/w"]["Base"][0]));
+      dispatch(setWeaponType(weaponObject["damage-type"]));
     } else if (weaponObject && weaponUpgrade != null) {
       try {
         dispatch(setWeaponDamage(weaponObject["damage/w"][weaponUpgrade][0]));
+        dispatch(setWeaponType(weaponObject["damage-type"]));
       } catch {
         dispatch(setWeaponUpgrade("Base"));
         dispatch(setWeaponDamage(weaponObject["damage/w"]["Base"][0]));
+        dispatch(setWeaponType(weaponObject["damage-type"]));
       }
     } else {
+      dispatch(setWeaponName(null));
       dispatch(setWeaponDamage(null));
       dispatch(setWeaponUpgrade(null));
+      dispatch(setWeaponType(null));
     }
   }, [weaponObject]);
 
