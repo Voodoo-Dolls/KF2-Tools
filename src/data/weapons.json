@@ -28,9 +28,19 @@
             "+1":[113,3],
             "+2":[127,4]
         },
-        "damage-type":"Pistol",
+        "damage-type":"Handgun",
         "Perks":["Gunslinger"]
+    },
+    {
+        "weapon-name": "FNFAL ACOG",
+        "damage/w":{
+            "Base":[70, 8],
+            "+1":[80, 9]
+        },
+        "damage-type":"Rifle",
+        "Perks":["Sharpshooter", "Commando"]
     }
+    
 
     ]
 }
