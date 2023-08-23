@@ -1,0 +1,27 @@
+.border {}
+
+select {}
+
+.perk_container {
+    display: flex;
+    align-items: center;
+}
+
+.perk_container select {
+    width: 2%;
+    min-width: fit-content;
+}
+
+.perk_container input {
+    max-width: 90px;
+}
+
+.skills_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.skills select {
+    flex-grow: 1;
+}

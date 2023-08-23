@@ -42,10 +42,7 @@ const DamageCalculator = () => {
   }
 
   return (
-    <>
-      <p> Perk Name: {perkName}</p>
-      <p> Perk Bonus: {perkBonus}</p>
-      <p> Perk Level: {perkLevel}</p>
+    <div className="container">
       <p> Weapon Name: {weaponName}</p>
       <p> Weapon Upgrade: {weaponUpgrade}</p>
       <p> Weapon Damage: {weaponDamage}</p>
@@ -58,7 +55,7 @@ const DamageCalculator = () => {
       <PlayerBlock />
       <ZedBlock />
       <button onClick={stageOne}>HeadShot</button>
-    </>
+    </div>
   );
 };
 
