@@ -8,6 +8,7 @@ export const zedSlice = createSlice({
     headModifier: 1,
     bodyHealth: 0,
     bodyModifer: 1,
+    zedObject: null,
   },
   reducers: {
     setZedName: (state, action) => {
@@ -20,10 +21,14 @@ export const zedSlice = createSlice({
     setBodyHealth: (state, action) => {
       state.bodyHealth = action.payload;
     },
+    setZedObject: (state, action) => {
+      state.zedObject = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setZedName, setHeadHealth, setBodyHealth } = zedSlice.actions;
+export const { setZedName, setHeadHealth, setBodyHealth, setZedObject } =
+  zedSlice.actions;
 
 export default zedSlice.reducer;

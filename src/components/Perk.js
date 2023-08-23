@@ -2,20 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import perks from "../data/perks.json";
 import { useState, useEffect } from "react";
 import { setPerkName, setPerkBonus, setPerkWeapons } from "../features/perk";
-import weapons from "../data/weapons.json";
-import {
-  setWeaponName,
-  setWeaponUpgrade,
-  setWeaponObject,
-} from "../features/weapon";
+import { setWeaponObject, setShotsFired } from "../features/weapon";
 
 const Perk = () => {
   //Redux
+  const dispatch = useDispatch();
   const { perkName, perkLevel, perkWeapons } = useSelector(
     (state) => state.perk
   );
   const { weaponName } = useSelector((state) => state.weapon);
-  const dispatch = useDispatch();
 
   //States
   const [perkObject, setPerkObject] = useState(null);
@@ -27,6 +22,7 @@ const Perk = () => {
     if (value) {
       dispatch(setPerkBonus(0));
       dispatch(setPerkWeapons(value));
+      dispatch(setShotsFired(0));
       setPerkObject(perkArray.filter((perk) => perk["perk-name"] === value)[0]);
     } else {
       dispatch(setPerkBonus(0));
@@ -41,6 +37,7 @@ const Perk = () => {
     };
   }
 
+  //Confirms if current weapon is perk related, if not reset.
   useEffect(() => {
     if (perkObject) {
       if (!perkWeapons.some((weapon) => weapon["weapon-name"] === weaponName)) {
@@ -65,6 +62,7 @@ const Perk = () => {
           perkLevel * perkObject["perk-level-bonus"]
       )
     );
+    dispatch(setShotsFired(0));
   }
 
   // JSX

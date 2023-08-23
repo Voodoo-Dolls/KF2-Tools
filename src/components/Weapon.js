@@ -7,6 +7,7 @@ import {
   setWeaponType,
   setWeaponUpgrade,
   setWeaponObject,
+  setShotsFired,
 } from "../features/weapon";
 const Weapon = () => {
   // Redux
@@ -27,6 +28,7 @@ const Weapon = () => {
           ]
         )
       );
+      dispatch(setShotsFired(0));
     }
   };
 
@@ -57,6 +59,7 @@ const Weapon = () => {
     const value = event.target.value;
     dispatch(setWeaponUpgrade(value));
     dispatch(setWeaponDamage(weaponObject["damage/w"][value][0]));
+    dispatch(setShotsFired(0));
   };
 
   return (
@@ -78,7 +81,6 @@ const Weapon = () => {
 
       {weaponObject && (
         <>
-          <p>Weapon Upgrade: {weaponUpgrade}</p>
           <select name="" id="" onChange={onUpgradeSelect}>
             {Object.keys(weaponObject["damage/w"]).map((key) => (
               <option value={key} key={key}>
@@ -86,8 +88,6 @@ const Weapon = () => {
               </option>
             ))}
           </select>
-          <p>Weapon Type: {weaponType}</p>
-          <p>Weapon Damage: {weaponDamage}</p>
         </>
       )}
     </>

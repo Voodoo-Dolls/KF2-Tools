@@ -3,10 +3,10 @@
         {
             "zed-name": "Fleshpound",
             "head-health": 1716,
-            "head-modifier": 0.1,
+            "head-modifier": 1.1,
             "body-health": 5310,
-            "body-modifier": 0,
-            "weapon-modifer":{
+            "body-modifier": 1,
+            "weapon-modifier":{
                 "Assault-Rifle":0.5,
                 "Handgun":0.75,
                 "Shotgun":0.75,
@@ -19,10 +19,19 @@
 
         {
             "zed-name": "Scrake",
-            "head-health": 300,
-            "body-health": 5310
-
-
+            "head-health": 1584,
+            "head-modifier": 1.1,
+            "body-health": 3569,
+            "body-modifier":1,
+            "weapon-modifier":{
+                "Assault-Rifle": 1,
+                "Handgun": 0.8,
+                "Shotgun": 0.9,
+                "SMG": 1,
+                "Rifle": 1,
+                "Ballistic Shell": 1,
+                "Piercing": 0.75
+            }
         }
     ]
 }

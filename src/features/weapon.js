@@ -9,6 +9,7 @@ export const weaponSlice = createSlice({
     weaponType: null,
     weaponList: null,
     weaponObject: null,
+    shotsFired: 0,
   },
   reducers: {
     setWeaponName: (state, action) => {
@@ -29,6 +30,9 @@ export const weaponSlice = createSlice({
     setWeaponObject: (state, action) => {
       state.weaponObject = action.payload;
     },
+    setShotsFired: (state, action) => {
+      state.shotsFired = action.payload;
+    },
   },
 });
 
@@ -40,6 +44,7 @@ export const {
   setWeaponType,
   setWeaponList,
   setWeaponObject,
+  setShotsFired,
 } = weaponSlice.actions;
 
 export default weaponSlice.reducer;
