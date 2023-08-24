@@ -92,15 +92,25 @@ const Perk = () => {
   }, [perkObject]);
 
   useEffect(() => {
-    if (perkObject) {
+    if (perkObject && zedTime) {
       let skills = Object.keys(skillObject)
         .map((lvl) => skillObject[lvl])
         .reduce((pv, cv) => pv + cv);
       dispatch(
         setPerkBonus(+perkLevel * perkObject["perk-level-bonus"] + skills)
       );
+    } else if (perkObject && !zedTime) {
+      let skills = Object.keys(skillObject)
+        .map((lvl) => skillObject[lvl])
+        .reduce((pv, cv) => pv + cv);
+      dispatch(
+        setPerkBonus(
+          +perkLevel * perkObject["perk-level-bonus"] +
+            (skills - skillObject["Lvl-25"])
+        )
+      );
     }
-  }, [perkLevel]);
+  }, [perkLevel, zedTime]);
 
   //Data
   const perkArray = perks["perk-list"];
