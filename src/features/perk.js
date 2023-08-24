@@ -17,7 +17,7 @@ export const perkSlice = createSlice({
     },
 
     setPerkBonus: (state, action) => {
-      state.perkBonus = action.payload;
+      state.perkBonus = action.payload.toFixed(2);
     },
     setPerkLevel: (state, action) => {
       state.perkLevel = action.payload;
@@ -46,8 +46,5 @@ export const {
   setZedTime,
   setFocusStacks,
 } = perkSlice.actions;
-export const { setPerkName, setPerkBonus, setPerkLevel, setPerkWeapons } =
-  perkSlice.actions;
-
 
 export default perkSlice.reducer;
