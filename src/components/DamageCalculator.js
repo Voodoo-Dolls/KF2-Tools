@@ -36,6 +36,7 @@ const DamageCalculator = () => {
     stageThree(damage);
   }
 
+  //Hitzone
   function stageThree(damage) {
     damage = Math.floor(damage * zedObject["head-modifier"]);
     stageFour(damage);
@@ -62,6 +63,7 @@ const DamageCalculator = () => {
       <p>Shots Fired: {shotsFired}</p>
       <p>Focus Stacks: {focusStacks}</p>
       <p>Zed Time:</p>
+
       <PlayerBlock />
       <ZedBlock />
       <button onClick={stageOne}>HeadShot</button>

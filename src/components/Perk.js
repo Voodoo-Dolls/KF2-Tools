@@ -7,16 +7,16 @@ import {
   setPerkWeapons,
   setPerkLevel,
   setZedTime,
-  setFocusStacks,
+  setFocusStacks
 } from "../features/perk";
 import { setWeaponObject, setShotsFired } from "../features/weapon";
-import zed from "../features/zed";
 
 const Perk = () => {
   //Redux
   const dispatch = useDispatch();
   const { perkName, perkLevel, perkWeapons, perkBonus, zedTime, focusStacks } =
     useSelector((state) => state.perk);
+
   const { weaponName } = useSelector((state) => state.weapon);
 
   //States
@@ -42,9 +42,6 @@ const Perk = () => {
       "Lvl-25": 0,
     };
   }
-  const test = {
-    id: [],
-  };
 
   function handleSkillChange(e) {
     const id = e.target.id;
@@ -73,6 +70,7 @@ const Perk = () => {
     dispatch(setPerkLevel(value));
   }
 
+
   function handleZedTime(e) {
     const value = e.target.checked;
     dispatch(setZedTime(value));
@@ -82,6 +80,7 @@ const Perk = () => {
     const value = e.target.value;
     dispatch(setFocusStacks(value));
   }
+
 
   //Confirms if current weapon is perk related, if not reset.
   useEffect(() => {
@@ -94,29 +93,16 @@ const Perk = () => {
     }
   }, [perkObject]);
 
-  //If any thing changes, recalculate perk bonus
   useEffect(() => {
-    if (perkObject && zedTime) {
+    if (perkObject) {
       let skills = Object.keys(skillObject)
         .map((lvl) => skillObject[lvl])
         .reduce((pv, cv) => pv + cv);
       dispatch(
         setPerkBonus(+perkLevel * perkObject["perk-level-bonus"] + skills)
       );
-    } else if (perkObject && !zedTime) {
-      let skills = Object.keys(skillObject)
-        .map((lvl) => skillObject[lvl])
-        .reduce((pv, cv) => pv + cv);
-      dispatch(
-        setPerkBonus(
-          +perkLevel * perkObject["perk-level-bonus"] +
-            (skills - skillObject["Lvl-25"])
-        )
-      );
     }
-  }, [perkLevel, zedTime, perkObject]);
-
-  // If zed time toggles, recalculate bonus
+  }, [perkLevel]);
 
   //Data
   const perkArray = perks["perk-list"];
@@ -156,6 +142,7 @@ const Perk = () => {
           max={4}
           onChange={handleFocus}
         />
+
       </div>
       {perkName && <h3>Skills:</h3>}
       <div className="skills_container">
