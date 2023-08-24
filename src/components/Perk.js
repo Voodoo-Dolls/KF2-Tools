@@ -7,6 +7,7 @@ import {
   setPerkWeapons,
   setPerkLevel,
   setZedTime,
+  setFocusStacks,
 } from "../features/perk";
 import { setWeaponObject, setShotsFired } from "../features/weapon";
 import zed from "../features/zed";
@@ -14,9 +15,8 @@ import zed from "../features/zed";
 const Perk = () => {
   //Redux
   const dispatch = useDispatch();
-  const { perkName, perkLevel, perkWeapons, perkBonus, zedTime } = useSelector(
-    (state) => state.perk
-  );
+  const { perkName, perkLevel, perkWeapons, perkBonus, zedTime, focusStacks } =
+    useSelector((state) => state.perk);
   const { weaponName } = useSelector((state) => state.weapon);
 
   //States
@@ -45,8 +45,7 @@ const Perk = () => {
   const test = {
     id: [],
   };
-  test["id"] = [0, "asd"];
-  console.log(test["id"][1]);
+
   function handleSkillChange(e) {
     const id = e.target.id;
     const value = e.target.value;
@@ -57,9 +56,7 @@ const Perk = () => {
       skillObject["Lvl-15"] +
       skillObject["Lvl-20"];
     if (zedTime) {
-      console.log(skillObject);
       total = total + skillObject["Lvl-25"];
-      console.log(total);
       dispatch(
         setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
       );
@@ -79,6 +76,11 @@ const Perk = () => {
   function handleZedTime(e) {
     const value = e.target.checked;
     dispatch(setZedTime(value));
+  }
+
+  function handleFocus(e) {
+    const value = e.target.value;
+    dispatch(setFocusStacks(value));
   }
 
   //Confirms if current weapon is perk related, if not reset.
@@ -146,6 +148,14 @@ const Perk = () => {
           <p>Zedtime:</p>
           <input type="checkbox" onChange={handleZedTime} />
         </div>
+        <p>Focus Stacks:</p>
+        <input
+          type="number"
+          defaultValue={0}
+          min={0}
+          max={4}
+          onChange={handleFocus}
+        />
       </div>
       {perkName && <h3>Skills:</h3>}
       <div className="skills_container">
