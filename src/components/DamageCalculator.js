@@ -26,7 +26,8 @@ const DamageCalculator = () => {
   // CALCULATIONS
 
   function stageOne() {
-    let damage = Math.ceil(weaponDamage * (1 + parseInt(perkBonus)));
+    let damage = Math.ceil(weaponDamage * (+perkBonus + 1));
+    console.log(damage);
     stageTwo(damage);
   }
 

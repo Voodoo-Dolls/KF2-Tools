@@ -5,6 +5,7 @@ import {
   setBodyHealth,
   setZedObject,
 } from "../features/zed";
+import { setShotsFired } from "../features/weapon";
 import { useState, useEffect } from "react";
 import zeds from "../data/zeds.json";
 
@@ -29,6 +30,7 @@ const ZedBlock = () => {
     try {
       dispatch(setHeadHealth(zedObject["head-health"]));
       dispatch(setBodyHealth(zedObject["body-health"]));
+      dispatch(setShotsFired(0));
     } catch (e) {}
   }, [zedName]);
 
