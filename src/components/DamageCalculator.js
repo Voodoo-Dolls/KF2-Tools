@@ -22,19 +22,25 @@ const DamageCalculator = () => {
   // In Zed component
 
   // CALCULATIONS
+
   function stageOne() {
-    let damage = weaponDamage * zedObject["head-modifier"];
+    let damage = weaponDamage * (1 + perkBonus);
     stageTwo(damage);
   }
-
+  // Future medic calcs
   function stageTwo(damage) {
-    let resistance = zedObject["weapon-modifier"][weaponType];
-    damage = Math.floor(damage * resistance);
+    damage = Math.ceil(damage * 1);
     stageThree(damage);
   }
 
+  //Hitzone
   function stageThree(damage) {
-    damage = Math.ceil(damage * (1 + perkBonus));
+    damage = Math.floor(damage * zedObject["head-modifier"]);
+    stageFour(damage);
+  }
+  //Damage Type
+  function stageFour(damage) {
+    damage = Math.floor(damage * zedObject["weapon-modifier"][weaponType]);
     dispatch(setHeadHealth(headHealth - damage));
     dispatch(setBodyHealth(bodyHealth - damage));
     dispatch(setShotsFired(shotsFired + 1));
