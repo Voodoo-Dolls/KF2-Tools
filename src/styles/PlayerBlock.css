@@ -2,11 +2,20 @@
 
 select {}
 
-.perk_container {
+
+
+
+.perk_container,
+.skills_container {
     position: relative;
     display: flex;
     gap: 12px;
-
+    border: rgb(125, 125, 125) solid 2px;
+    padding: 20px 20px 4px 20px;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-top: -20px;
 }
 
 .perk_container input {
@@ -21,7 +30,8 @@ select {}
 .perkLevels {}
 
 .perkBonus,
-.zed_time_container {
+.zed_time_container,
+.focus {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +39,7 @@ select {}
 }
 
 .perkBonus p {
-    margin: 0;
+    margin-bottom: -4px;
 }
 
 .bigBold {
@@ -48,20 +58,12 @@ select {}
 .zed_time_container {
     gap: 8px;
 
-
 }
 
-.focus {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.focus input {
+    margin-top: -6px;
+    transform: scale(0.8);
 }
-
-
-
-
-
-
 
 
 

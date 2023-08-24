@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PlayerBlock from "./PlayerBlock";
 import ZedBlock from "../components/ZedBlock";
+import HealthBar from "./HealthBar";
 import { setBodyHealth, setHeadHealth } from "../features/zed";
 import { setShotsFired } from "../features/weapon";
 
@@ -27,7 +28,6 @@ const DamageCalculator = () => {
 
   function stageOne() {
     let damage = Math.ceil(weaponDamage * (+perkBonus + 1));
-    console.log(damage);
     stageTwo(damage);
   }
 
@@ -53,18 +53,10 @@ const DamageCalculator = () => {
 
   return (
     <div className="container">
-      <p> Weapon Name: {weaponName}</p>
-      <p> Weapon Upgrade: {weaponUpgrade}</p>
       <p> Weapon Damage: {weaponDamage}</p>
-      <p> Weapon Type: {weaponType}</p>
-      <p> Zed Name: {zedName}</p>
-      <p> HeadHealth: {headHealth}</p>
-      <p> BodyHealth: {bodyHealth}</p>
       <p>Damage Dealt: {damageDealt}</p>
       <p>Shots Fired: {shotsFired}</p>
-      <p>Focus Stacks: {focusStacks}</p>
-      <p>Zed Time:</p>
-
+      <HealthBar />
       <PlayerBlock />
       <ZedBlock />
       <button onClick={stageOne}>HeadShot</button>

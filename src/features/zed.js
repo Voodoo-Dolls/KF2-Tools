@@ -16,7 +16,11 @@ export const zedSlice = createSlice({
     },
 
     setHeadHealth: (state, action) => {
-      state.headHealth = action.payload;
+      if (action.payload <= 0) {
+        state.headHealth = 0;
+      } else {
+        state.headHealth = action.payload;
+      }
     },
     setBodyHealth: (state, action) => {
       state.bodyHealth = action.payload;

@@ -110,7 +110,7 @@ const Perk = () => {
         )
       );
     }
-  }, [perkLevel, zedTime]);
+  }, [perkLevel, zedTime, perkObject]);
 
   //Data
   const perkArray = perks["perk-list"];
@@ -160,35 +160,40 @@ const Perk = () => {
           </div>
         </div>
       </div>
+      {/* SKILLS */}
       {perkName && <h3>Skills:</h3>}
-      <div className="skills_container">
-        {perkName &&
-          Object.keys(perkObject["Skills"]).map((lvl) => (
-            <div className="skills" key={"skill" + lvl}>
-              <select name="" id={lvl} onChange={handleSkillChange}>
-                <option value={0} key={perkObject["Skills"]}></option>
-                <option
-                  value={perkObject["Skills"][lvl]["left"]["damage-modifier"]}
-                  key={perkObject["Skills"][lvl]["left"]["skill-name"]}
-                  defaultValue={
-                    perkObject["Skills"][lvl]["left"]["damage-modifier"]
-                  }
-                >
-                  {perkObject["Skills"][lvl]["left"]["skill-name"]}
-                </option>
-                <option
-                  value={perkObject["Skills"][lvl]["right"]["damage-modifier"]}
-                  key={perkObject["Skills"][lvl]["right"]["skill-name"]}
-                  defaultValue={
-                    perkObject["Skills"][lvl]["right"]["damage-modifier"]
-                  }
-                >
-                  {perkObject["Skills"][lvl]["right"]["skill-name"]}
-                </option>
-              </select>
-            </div>
-          ))}
-      </div>
+      {perkName && (
+        <div className="skills_container">
+          {perkName &&
+            Object.keys(perkObject["Skills"]).map((lvl) => (
+              <div className="skills" key={"skill" + lvl}>
+                <select name="" id={lvl} onChange={handleSkillChange}>
+                  <option value={0} key={perkObject["Skills"]}></option>
+                  <option
+                    value={perkObject["Skills"][lvl]["left"]["damage-modifier"]}
+                    key={perkObject["Skills"][lvl]["left"]["skill-name"]}
+                    defaultValue={
+                      perkObject["Skills"][lvl]["left"]["damage-modifier"]
+                    }
+                  >
+                    {perkObject["Skills"][lvl]["left"]["skill-name"]}
+                  </option>
+                  <option
+                    value={
+                      perkObject["Skills"][lvl]["right"]["damage-modifier"]
+                    }
+                    key={perkObject["Skills"][lvl]["right"]["skill-name"]}
+                    defaultValue={
+                      perkObject["Skills"][lvl]["right"]["damage-modifier"]
+                    }
+                  >
+                    {perkObject["Skills"][lvl]["right"]["skill-name"]}
+                  </option>
+                </select>
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };

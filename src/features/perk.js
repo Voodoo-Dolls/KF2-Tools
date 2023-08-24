@@ -17,7 +17,7 @@ export const perkSlice = createSlice({
     },
 
     setPerkBonus: (state, action) => {
-      state.perkBonus = action.payload.toFixed(3);
+      state.perkBonus = action.payload.toFixed(2);
     },
     setPerkLevel: (state, action) => {
       state.perkLevel = action.payload;

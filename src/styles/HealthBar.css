@@ -1,0 +1,25 @@
+.healthbar_container {
+    position: relative;
+    height: fit-content;
+    border-radius: 10px;
+    border: black 4px solid;
+    overflow: hidden;
+}
+
+.healthbar {
+    position: relative;
+    background-color: green;
+    text-align: center;
+    height: 50px;
+    transition: width ease-in 0.5s;
+}
+
+.health_value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-weight: 700;
+    color: white;
+}
