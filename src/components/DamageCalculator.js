@@ -51,11 +51,19 @@ const DamageCalculator = () => {
     setDamageDealt(damage);
   }
 
+  useEffect(() => {
+    if (headHealth == 0 && zedObject) {
+      let calc = damageDealt + zedObject["body-health"] * 0.25;
+      stageTwo(calc);
+    }
+  }, [headHealth]);
+
   return (
     <div className="container">
       <p> Weapon Damage: {weaponDamage}</p>
       <p>Damage Dealt: {damageDealt}</p>
       <p>Shots Fired: {shotsFired}</p>
+      <p>Body Health: {bodyHealth}</p>
       <HealthBar />
       <PlayerBlock />
       <ZedBlock />
