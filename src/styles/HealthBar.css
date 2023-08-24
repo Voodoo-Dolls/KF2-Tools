@@ -10,7 +10,7 @@
     position: relative;
     background-color: green;
     text-align: center;
-    height: 50px;
+    height: 30px;
     transition: width ease-in 0.5s;
 }
 

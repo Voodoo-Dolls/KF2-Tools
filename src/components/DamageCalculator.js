@@ -65,9 +65,9 @@ const DamageCalculator = () => {
       <p>Shots Fired: {shotsFired}</p>
       <p>Body Health: {bodyHealth}</p>
       <HealthBar />
+      <button onClick={stageOne}>HeadShot</button>
       <PlayerBlock />
       <ZedBlock />
-      <button onClick={stageOne}>HeadShot</button>
     </div>
   );
 };

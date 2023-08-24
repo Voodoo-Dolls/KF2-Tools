@@ -6,10 +6,11 @@ select {}
 
 
 .perk_container,
-.skills_container {
+.skills_container,
+.weapon_container {
     position: relative;
     display: flex;
-    gap: 12px;
+    gap: 20px;
     border: rgb(125, 125, 125) solid 2px;
     padding: 20px 20px 4px 20px;
     align-items: center;
@@ -31,7 +32,8 @@ select {}
 
 .perkBonus,
 .zed_time_container,
-.focus {
+.focus,
+.weapon_damage {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,8 +55,6 @@ select {}
 }
 
 
-
-
 .zed_time_container {
     gap: 8px;
 
@@ -65,17 +65,29 @@ select {}
     transform: scale(0.8);
 }
 
-
-
-
-
-
+/* SKILLS */
 .skills_container {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
 }
 
-.skills select {
-    flex-grow: 1;
+/* WEAPONS */
+
+.weapon_container{
+    display:flex;
+    padding-bottom: 20px;
+}
+
+.weapon_container select{
+    width: fit-content;
+}
+
+.weapon_container select:nth-of-type(2){
+    margin-left:-20px;
+}
+
+.weapon_damage p{
+    margin-bottom:0;
+
 }
