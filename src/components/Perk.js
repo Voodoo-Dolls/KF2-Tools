@@ -7,7 +7,7 @@ import {
   setPerkWeapons,
   setPerkLevel,
   setZedTime,
-  setFocusStacks
+  setFocusStacks,
 } from "../features/perk";
 import { setWeaponObject, setShotsFired } from "../features/weapon";
 
@@ -70,7 +70,6 @@ const Perk = () => {
     dispatch(setPerkLevel(value));
   }
 
-
   function handleZedTime(e) {
     const value = e.target.checked;
     dispatch(setZedTime(value));
@@ -80,7 +79,6 @@ const Perk = () => {
     const value = e.target.value;
     dispatch(setFocusStacks(value));
   }
-
 
   //Confirms if current weapon is perk related, if not reset.
   useEffect(() => {
@@ -113,36 +111,44 @@ const Perk = () => {
       <h3>Perk:</h3>
 
       <div className="perk_container">
-        <select name="" id="" onChange={perkChangeHandle}>
-          <option value={null}></option>
-          {perkArray.map((perk) => (
-            <option value={perk["perk-name"]} key={perk["perk-name"]}>
-              {perk["perk-name"]}
-            </option>
-          ))}
-        </select>
-        <input
-          type="number"
-          defaultValue={25}
-          min={1}
-          max={25}
-          onChange={handleLvlChange}
-        />
-        <p>Perk Bonus: {perkBonus}</p>
-        <p>Perk Level: {perkLevel}</p>
-        <div className="zed_time_container">
-          <p>Zedtime:</p>
-          <input type="checkbox" onChange={handleZedTime} />
+        <div className="perkLevels">
+          <select name="" id="" onChange={perkChangeHandle}>
+            <option value={null}></option>
+            {perkArray.map((perk) => (
+              <option value={perk["perk-name"]} key={perk["perk-name"]}>
+                {perk["perk-name"]}
+              </option>
+            ))}
+          </select>
+          <input
+            type="number"
+            defaultValue={25}
+            min={1}
+            max={25}
+            onChange={handleLvlChange}
+          />
         </div>
-        <p>Focus Stacks:</p>
-        <input
-          type="number"
-          defaultValue={0}
-          min={0}
-          max={4}
-          onChange={handleFocus}
-        />
-
+        <div className="details">
+          <div className="perkBonus">
+            <p>Perk Bonus</p>
+            <p className="bigBold">{perkBonus}</p>
+          </div>
+          <div className="zed_time_container">
+            <label htmlFor="zed_time">Zed Time</label>
+            <input id="zed_time" type="checkbox" onChange={handleZedTime} />
+          </div>
+          <div className="focus">
+            <label htmlFor="focus">Focus Stacks</label>
+            <input
+              type="number"
+              defaultValue={0}
+              min={0}
+              max={4}
+              onChange={handleFocus}
+              id="focus"
+            />
+          </div>
+        </div>
       </div>
       {perkName && <h3>Skills:</h3>}
       <div className="skills_container">
@@ -150,9 +156,7 @@ const Perk = () => {
           Object.keys(perkObject["Skills"]).map((lvl) => (
             <div className="skills" key={"skill" + lvl}>
               <select name="" id={lvl} onChange={handleSkillChange}>
-                <option value={0} key={perkObject["Skills"]}>
-                  {lvl}
-                </option>
+                <option value={0} key={perkObject["Skills"]}></option>
                 <option
                   value={perkObject["Skills"][lvl]["left"]["damage-modifier"]}
                   key={perkObject["Skills"][lvl]["left"]["skill-name"]}
