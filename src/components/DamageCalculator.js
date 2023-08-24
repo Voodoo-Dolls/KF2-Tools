@@ -52,7 +52,6 @@ const DamageCalculator = () => {
 
   return (
     <div className="container">
-      <p>Test</p>
       <p> Weapon Name: {weaponName}</p>
       <p> Weapon Upgrade: {weaponUpgrade}</p>
       <p> Weapon Damage: {weaponDamage}</p>
