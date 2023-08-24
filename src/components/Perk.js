@@ -6,13 +6,15 @@ import {
   setPerkBonus,
   setPerkWeapons,
   setPerkLevel,
+  setZedTime,
 } from "../features/perk";
 import { setWeaponObject, setShotsFired } from "../features/weapon";
+import zed from "../features/zed";
 
 const Perk = () => {
   //Redux
   const dispatch = useDispatch();
-  const { perkName, perkLevel, perkWeapons, perkBonus } = useSelector(
+  const { perkName, perkLevel, perkWeapons, perkBonus, zedTime } = useSelector(
     (state) => state.perk
   );
   const { weaponName } = useSelector((state) => state.weapon);
@@ -40,24 +42,43 @@ const Perk = () => {
       "Lvl-25": 0,
     };
   }
-
+  const test = {
+    id: [],
+  };
+  test["id"] = [0, "asd"];
+  console.log(test["id"][1]);
   function handleSkillChange(e) {
     const id = e.target.id;
     const value = e.target.value;
     skillObject[id] = +value;
-    dispatch(
-      setPerkBonus(
-        Object.keys(skillObject)
-          .map((lvl) => skillObject[lvl])
-          .reduce((pv, cv) => pv + cv, 0) +
-          perkLevel * perkObject["perk-level-bonus"]
-      )
-    );
+    let total =
+      skillObject["Lvl-5"] +
+      skillObject["Lvl-10"] +
+      skillObject["Lvl-15"] +
+      skillObject["Lvl-20"];
+    if (zedTime) {
+      console.log(skillObject);
+      total = total + skillObject["Lvl-25"];
+      console.log(total);
+      dispatch(
+        setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
+      );
+    } else {
+      dispatch(
+        setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
+      );
+    }
+
     dispatch(setShotsFired(0));
   }
   function handleLvlChange(e) {
     const value = e.target.value;
     dispatch(setPerkLevel(value));
+  }
+
+  function handleZedTime(e) {
+    const value = e.target.checked;
+    dispatch(setZedTime(value));
   }
 
   //Confirms if current weapon is perk related, if not reset.
@@ -71,16 +92,29 @@ const Perk = () => {
     }
   }, [perkObject]);
 
+  //If any thing changes, recalculate perk bonus
   useEffect(() => {
-    if (perkObject) {
+    if (perkObject && zedTime) {
       let skills = Object.keys(skillObject)
         .map((lvl) => skillObject[lvl])
         .reduce((pv, cv) => pv + cv);
       dispatch(
         setPerkBonus(+perkLevel * perkObject["perk-level-bonus"] + skills)
       );
+    } else if (perkObject && !zedTime) {
+      let skills = Object.keys(skillObject)
+        .map((lvl) => skillObject[lvl])
+        .reduce((pv, cv) => pv + cv);
+      dispatch(
+        setPerkBonus(
+          +perkLevel * perkObject["perk-level-bonus"] +
+            (skills - skillObject["Lvl-25"])
+        )
+      );
     }
-  }, [perkLevel]);
+  }, [perkLevel, zedTime, perkObject]);
+
+  // If zed time toggles, recalculate bonus
 
   //Data
   const perkArray = perks["perk-list"];
@@ -108,6 +142,10 @@ const Perk = () => {
         />
         <p>Perk Bonus: {perkBonus}</p>
         <p>Perk Level: {perkLevel}</p>
+        <div className="zed_time_container">
+          <p>Zedtime:</p>
+          <input type="checkbox" onChange={handleZedTime} />
+        </div>
       </div>
       {perkName && <h3>Skills:</h3>}
       <div className="skills_container">

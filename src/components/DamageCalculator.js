@@ -22,6 +22,7 @@ const DamageCalculator = () => {
   // In Zed component
 
   // CALCULATIONS
+
   function stageOne() {
     let damage = weaponDamage * zedObject["head-modifier"];
     stageTwo(damage);
@@ -34,7 +35,7 @@ const DamageCalculator = () => {
   }
 
   function stageThree(damage) {
-    damage = Math.ceil(damage * (1 + perkBonus));
+    damage = Math.ceil(damage * (1 + parseInt(perkBonus)));
     dispatch(setHeadHealth(headHealth - damage));
     dispatch(setBodyHealth(bodyHealth - damage));
     dispatch(setShotsFired(shotsFired + 1));
@@ -52,6 +53,7 @@ const DamageCalculator = () => {
       <p> BodyHealth: {bodyHealth}</p>
       <p>Damage Dealt: {damageDealt}</p>
       <p>Shots Fired: {shotsFired}</p>
+      <p>Zed Time:</p>
       <PlayerBlock />
       <ZedBlock />
       <button onClick={stageOne}>HeadShot</button>
