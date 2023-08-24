@@ -7,7 +7,9 @@ import { setShotsFired } from "../features/weapon";
 
 const DamageCalculator = () => {
   //Redux
-  const { perkName, perkBonus, perkLevel } = useSelector((state) => state.perk);
+  const { perkName, perkBonus, perkLevel, focusStacks } = useSelector(
+    (state) => state.perk
+  );
   const { zedName, headHealth, bodyHealth, zedObject } = useSelector(
     (state) => state.zed
   );
@@ -24,12 +26,13 @@ const DamageCalculator = () => {
   // CALCULATIONS
 
   function stageOne() {
-    let damage = weaponDamage * (1 + perkBonus);
+    let damage = Math.ceil(weaponDamage * (1 + parseInt(perkBonus)));
     stageTwo(damage);
   }
-  // Future medic calcs
+
+  //Future Focus Buffs
   function stageTwo(damage) {
-    damage = Math.ceil(damage * 1);
+    damage = Math.ceil(damage * (1 + 0.05 * parseInt(focusStacks)));
     stageThree(damage);
   }
 
@@ -38,7 +41,7 @@ const DamageCalculator = () => {
     damage = Math.floor(damage * zedObject["head-modifier"]);
     stageFour(damage);
   }
-  //Damage Type
+
   function stageFour(damage) {
     damage = Math.floor(damage * zedObject["weapon-modifier"][weaponType]);
     dispatch(setHeadHealth(headHealth - damage));
@@ -58,6 +61,9 @@ const DamageCalculator = () => {
       <p> BodyHealth: {bodyHealth}</p>
       <p>Damage Dealt: {damageDealt}</p>
       <p>Shots Fired: {shotsFired}</p>
+      <p>Focus Stacks: {focusStacks}</p>
+      <p>Zed Time:</p>
+
       <PlayerBlock />
       <ZedBlock />
       <button onClick={stageOne}>HeadShot</button>

@@ -6,15 +6,17 @@ import {
   setPerkBonus,
   setPerkWeapons,
   setPerkLevel,
+  setZedTime,
+  setFocusStacks
 } from "../features/perk";
 import { setWeaponObject, setShotsFired } from "../features/weapon";
 
 const Perk = () => {
   //Redux
   const dispatch = useDispatch();
-  const { perkName, perkLevel, perkWeapons, perkBonus } = useSelector(
-    (state) => state.perk
-  );
+  const { perkName, perkLevel, perkWeapons, perkBonus, zedTime, focusStacks } =
+    useSelector((state) => state.perk);
+
   const { weaponName } = useSelector((state) => state.weapon);
 
   //States
@@ -45,20 +47,40 @@ const Perk = () => {
     const id = e.target.id;
     const value = e.target.value;
     skillObject[id] = +value;
-    dispatch(
-      setPerkBonus(
-        Object.keys(skillObject)
-          .map((lvl) => skillObject[lvl])
-          .reduce((pv, cv) => pv + cv, 0) +
-          perkLevel * perkObject["perk-level-bonus"]
-      )
-    );
+    let total =
+      skillObject["Lvl-5"] +
+      skillObject["Lvl-10"] +
+      skillObject["Lvl-15"] +
+      skillObject["Lvl-20"];
+    if (zedTime) {
+      total = total + skillObject["Lvl-25"];
+      dispatch(
+        setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
+      );
+    } else {
+      dispatch(
+        setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
+      );
+    }
+
     dispatch(setShotsFired(0));
   }
   function handleLvlChange(e) {
     const value = e.target.value;
     dispatch(setPerkLevel(value));
   }
+
+
+  function handleZedTime(e) {
+    const value = e.target.checked;
+    dispatch(setZedTime(value));
+  }
+
+  function handleFocus(e) {
+    const value = e.target.value;
+    dispatch(setFocusStacks(value));
+  }
+
 
   //Confirms if current weapon is perk related, if not reset.
   useEffect(() => {
@@ -108,6 +130,19 @@ const Perk = () => {
         />
         <p>Perk Bonus: {perkBonus}</p>
         <p>Perk Level: {perkLevel}</p>
+        <div className="zed_time_container">
+          <p>Zedtime:</p>
+          <input type="checkbox" onChange={handleZedTime} />
+        </div>
+        <p>Focus Stacks:</p>
+        <input
+          type="number"
+          defaultValue={0}
+          min={0}
+          max={4}
+          onChange={handleFocus}
+        />
+
       </div>
       {perkName && <h3>Skills:</h3>}
       <div className="skills_container">

@@ -8,6 +8,8 @@ export const perkSlice = createSlice({
     perkBonus: 0,
     perkLevel: 25,
     perkWeapons: null,
+    zedTime: false,
+    focusStacks: 0,
   },
   reducers: {
     setPerkName: (state, action) => {
@@ -25,11 +27,27 @@ export const perkSlice = createSlice({
         return weapon["Perks"].includes(action.payload);
       });
     },
+    setZedTime: (state, action) => {
+      state.zedTime = action.payload;
+    },
+    setFocusStacks: (state, action) => {
+      state.focusStacks = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
+
+export const {
+  setPerkName,
+  setPerkBonus,
+  setPerkLevel,
+  setPerkWeapons,
+  setZedTime,
+  setFocusStacks,
+} = perkSlice.actions;
 export const { setPerkName, setPerkBonus, setPerkLevel, setPerkWeapons } =
   perkSlice.actions;
+
 
 export default perkSlice.reducer;
