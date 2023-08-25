@@ -65,13 +65,12 @@ const DamageCalculator = () => {
   return (
     <div className="container">
       <div className="zed_block_container">
-        <ZedBlock />
-        <button onClick={stageOne}>HeadShot</button>
+        <ZedBlock damageDealt={damageDealt} />
+        <div className="button_container">
+          <button onClick={stageOne}>Head Shot</button>
+          <button>Body Shot (Not Working)</button>
+        </div>
       </div>
-
-      <p>Damage Dealt: {damageDealt}</p>
-      <p>Shots Fired: {shotsFired}</p>
-      <p>Body Health: {bodyHealth}</p>
       <PlayerBlock />
     </div>
   );

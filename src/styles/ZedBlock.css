@@ -1,12 +1,33 @@
 .zed_block_container {
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     padding: 20px;
     gap: 20px;
-
+    border: rgb(211, 211, 211) 2px solid;
+    border-radius: 10px;
 }
 
 .zed_block_container img {
     width: 400px;
     margin: auto;
+    padding: 20px;
+}
+
+
+.zed_block_container .details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zed_block_container .details p {
+    width: 100%;
+    flex-grow: 2;
+}
+
+.zed_block_container .button_container {
+    display: flex;
+    gap: 20px;
 }

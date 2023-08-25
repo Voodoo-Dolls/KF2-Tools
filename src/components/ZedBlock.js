@@ -10,11 +10,14 @@ import HealthBar from "./HealthBar";
 import { useState, useEffect } from "react";
 import zeds from "../data/zeds.json";
 
-const ZedBlock = () => {
+const ZedBlock = (damageDealt) => {
   //Redux
   const { zedName, headHealth, bodyHealth, zedObject } = useSelector(
     (state) => state.zed
   );
+
+  const { shotsFired } = useSelector((state) => state.weapon);
+
   const dispatch = useDispatch();
   //States
   //Data
@@ -43,14 +46,18 @@ const ZedBlock = () => {
           <HealthBar />
         </>
       )}
-      <select name="" id="" onChange={zedChange}>
-        <option value="null">Select a Zed</option>
-        {zedArray.map((zed) => (
-          <option value={zed["zed-name"]} key={zed["zed-name"]}>
-            {zed["zed-name"]}
-          </option>
-        ))}
-      </select>
+      <div className="details">
+        <select name="" id="" onChange={zedChange}>
+          <option value="null">Select a Zed</option>
+          {zedArray.map((zed) => (
+            <option value={zed["zed-name"]} key={zed["zed-name"]}>
+              {zed["zed-name"]}
+            </option>
+          ))}
+        </select>
+        <p>Damage Dealt: {damageDealt.damageDealt}</p>
+        <p>Shots Fired: {shotsFired}</p>
+      </div>
     </>
   );
 };

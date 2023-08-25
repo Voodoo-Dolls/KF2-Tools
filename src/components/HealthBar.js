@@ -6,15 +6,24 @@ const HealthBar = () => {
   const { zedName, headHealth, bodyHealth, zedObject } = useSelector(
     (state) => state.zed
   );
-  const [percent, setPercent] = useState("50%");
+  const [headPercent, setHeadPercent] = useState("100%");
+  const [bodyPercent, setBodyPercent] = useState("100%");
 
   useEffect(() => {
     if (zedObject) {
       let num = (headHealth / zedObject["head-health"]) * 100;
       num = num.toFixed(2);
-      setPercent(num.toString() + "%");
+      setHeadPercent(num.toString() + "%");
     }
   }, [headHealth]);
+
+  useEffect(() => {
+    if (zedObject) {
+      let num = (bodyHealth / zedObject["body-health"]) * 100;
+      num = num.toFixed(2);
+      setBodyPercent(num.toString() + "%");
+    }
+  }, [bodyHealth]);
   return (
     <div>
       {zedObject && (
@@ -22,7 +31,15 @@ const HealthBar = () => {
           <span className="health_value">
             {headHealth} / {zedObject["head-health"]}
           </span>
-          <div className="healthbar" style={{ width: `${percent}` }}></div>
+          <div className="healthbar" style={{ width: `${headPercent}` }}></div>
+        </div>
+      )}
+      {zedObject && (
+        <div className="healthbar_container">
+          <span className="health_value">
+            {bodyHealth} / {zedObject["body-health"]}
+          </span>
+          <div className="healthbar" style={{ width: `${bodyPercent}` }}></div>
         </div>
       )}
     </div>
