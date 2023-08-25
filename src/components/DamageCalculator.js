@@ -45,29 +45,31 @@ const DamageCalculator = () => {
 
   function stageFour(damage) {
     damage = Math.floor(damage * zedObject["weapon-modifier"][weaponType]);
+    if (headHealth != 0) {
+      dispatch(setShotsFired(shotsFired + 1));
+    }
     dispatch(setHeadHealth(headHealth - damage));
     dispatch(setBodyHealth(bodyHealth - damage));
-    dispatch(setShotsFired(shotsFired + 1));
     setDamageDealt(damage);
   }
 
   useEffect(() => {
     if (headHealth == 0 && zedObject) {
       let calc = damageDealt + zedObject["body-health"] * 0.25;
+      console.log(calc);
       stageTwo(calc);
     }
   }, [headHealth]);
 
   return (
     <div className="container">
-      <p> Weapon Damage: {weaponDamage}</p>
       <p>Damage Dealt: {damageDealt}</p>
       <p>Shots Fired: {shotsFired}</p>
       <p>Body Health: {bodyHealth}</p>
       <HealthBar />
-      <button onClick={stageOne}>HeadShot</button>
       <PlayerBlock />
       <ZedBlock />
+      <button onClick={stageOne}>HeadShot</button>
     </div>
   );
 };

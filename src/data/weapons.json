@@ -1,69 +1,78 @@
-{
+    {
 
-    "weapon-list":[{
-        "weapon-name": "M14 EBR",
-        "damage/w": {
-            "Base": [80, 7],
-            "+1":[103, 8],
-            "+2":[104, 9]
+    "weapon-list":[
+        {
+            "weapon-name": "Winchester 1894",
+            "damage/w":{
+                "Base":[80, 5],
+                "+1":[128, 6],
+                "+2":[152, 7],
+                "+3":[184,8],
+                "+4":[200, 9]
+            },
+            "damage-type":"Rifle",
+            "Perks":["Sharpshooter","Gunslinger","Survivalist"]
         },
-        "damage-type":"Rifle",
-        "Perks":["Sharpshooter", "Survivalist"]
-    },
-    {
-        "weapon-name": "SPX",
-        "damage/w":{
-            "Base":[165, 5],
-            "+1":[189, 6],
-            "+2":[214, 7],
-            "+3":[239, 8]
+        {
+            "weapon-name": "SPX 464 Centerfire",
+            "damage/w":{
+                "Base":[165, 5],
+                "+1":[189, 6],
+                "+2":[214, 7],
+                "+3":[239, 8]
+            },
+            "damage-type": "Rifle",
+            "Perks":["Sharpshooter","Survivalist", "Gunslinger"]
         },
-        "damage-type": "Rifle",
-        "Perks":["Sharpshooter","Survivalist", "Gunslinger"]
-    },
-    {
-        "weapon-name": "Deagle",
-        "damage/w":{
-            "Base":[91, 2],
-            "+1":[113,3],
-            "+2":[127,4]
+        {
+            "weapon-name":"Crossbow",
+            "damage/w":{
+                "Base":[350, 6],
+                "+1":[420, 7],
+                "+2":[490, 8],
+                "+3":[560, 9]
+            },
+            "damage-type":"Piercing",
+            "Perks":["Sharpshooter", "Survivalist"]
         },
-        "damage-type":"Handgun",
-        "Perks":["Gunslinger", "Survivalist"]
-    },
-    {
-        "weapon-name": "FNFAL ACOG",
-        "damage/w":{
-            "Base":[70, 8],
-            "+1":[80, 9]
+        {
+            "weapon-name": "M14 EBR",
+            "damage/w": {
+                "Base": [80, 7],
+                "+1":[103, 8],
+                "+2":[104, 9]
+            },
+            "damage-type":"Rifle",
+            "Perks":["Sharpshooter", "Survivalist"]
         },
-        "damage-type":"Rifle",
-        "Perks":["Sharpshooter", "Commando", "Survivalist"]
-    },
-    {
-        "weapon-name": "Winchester",
-        "damage/w":{
-            "Base":[80, 5],
-            "+1":[128, 6],
-            "+2":[152, 7],
-            "+3":[184,8],
-            "+4":[200, 9]
+        {
+            "weapon-name":"Mosin Nagant",
+            "damage/w":{
+                "Base": [250, 7],
+                "+1":[288, 8],
+                "+2":[325, 9]
+            },
+            "damage-type":"Rifle",
+            "Perks":["Sharpshooter", "Survivalist"]
         },
-        "damage-type":"Rifle",
-        "Perks":["Sharpshooter","Gunslinger","Survivalist"]
-    },
-    {
-        "weapon-name":"Crossbow",
-        "damage/w":{
-            "Base":[350, 6],
-            "+1":[420, 7],
-            "+2":[490, 8],
-            "+3":[560, 9]
+        {
+            "weapon-name": "Desert Eagles",
+            "damage/w":{
+                "Base":[91, 4],
+                "+1":[113,6],
+                "+2":[127,8]
+            },
+            "damage-type":"Handgun",
+            "Perks":["Gunslinger", "Survivalist"]
         },
-        "damage-type":"Piercing",
-        "Perks":["Sharpshooter", "Survivalist"]
+        {
+            "weapon-name": "FN FAL ACOG",
+            "damage/w":{
+                "Base":[70, 8],
+                "+1":[80, 9]
+            },
+            "damage-type":"Rifle",
+            "Perks":["Sharpshooter", "Commando", "Survivalist"]
+        }
+     ]
     }
-    
-
-    ]
-}

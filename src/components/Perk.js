@@ -118,7 +118,7 @@ const Perk = () => {
   return (
     <div className="container">
       {/* PERKS */}
-      <h3>Perk:</h3>
+      <h3>Perk</h3>
 
       <div className="perk_container">
         <div className="perkLevels">
@@ -168,7 +168,9 @@ const Perk = () => {
             Object.keys(perkObject["Skills"]).map((lvl) => (
               <div className="skills" key={"skill" + lvl}>
                 <select name="" id={lvl} onChange={handleSkillChange}>
-                  <option value={0} key={perkObject["Skills"]}>{lvl}</option>
+                  <option value={0} key={perkObject["Skills"]}>
+                    {lvl}
+                  </option>
                   <option
                     value={perkObject["Skills"][lvl]["left"]["damage-modifier"]}
                     key={perkObject["Skills"][lvl]["left"]["skill-name"]}

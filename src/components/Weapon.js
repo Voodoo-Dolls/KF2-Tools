@@ -64,11 +64,10 @@ const Weapon = () => {
 
   return (
     <>
-      
       {/* Checks if Perk is Selected */}
       {perkName && (
         <>
-        <select name="weapon" id="wep" onChange={onWeaponSelect}>
+          <select name="weapon" id="wep" onChange={onWeaponSelect}>
             <option value="null"></option>
             {perkWeapons.map((weapon) => (
               <option value={weapon["weapon-name"]} key={weapon["weapon-name"]}>
@@ -76,7 +75,6 @@ const Weapon = () => {
               </option>
             ))}
           </select>
-              
         </>
       )}
 
@@ -89,13 +87,14 @@ const Weapon = () => {
               </option>
             ))}
           </select>
+          <img src={require(`../images/weapons/${weaponName}.svg`)} alt="gun" />
+
           <div className="weapon_damage">
             <p>Weapon Damage</p>
             <p className="bigBold">{weaponDamage}</p>
           </div>
         </>
       )}
-
     </>
   );
 };

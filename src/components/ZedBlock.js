@@ -36,7 +36,7 @@ const ZedBlock = () => {
 
   return (
     <>
-      <p>Zed:</p>
+      <h3>Zed</h3>
       <select name="" id="" onChange={zedChange}>
         <option value="null"></option>
         {zedArray.map((zed) => (
