@@ -1,0 +1,12 @@
+.zed_block_container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+
+}
+
+.zed_block_container img {
+    width: 400px;
+    margin: auto;
+}

@@ -5,6 +5,7 @@ import ZedBlock from "../components/ZedBlock";
 import HealthBar from "./HealthBar";
 import { setBodyHealth, setHeadHealth } from "../features/zed";
 import { setShotsFired } from "../features/weapon";
+import "../styles/ZedBlock.css";
 
 const DamageCalculator = () => {
   //Redux
@@ -63,13 +64,15 @@ const DamageCalculator = () => {
 
   return (
     <div className="container">
+      <div className="zed_block_container">
+        <ZedBlock />
+        <button onClick={stageOne}>HeadShot</button>
+      </div>
+
       <p>Damage Dealt: {damageDealt}</p>
       <p>Shots Fired: {shotsFired}</p>
       <p>Body Health: {bodyHealth}</p>
-      <HealthBar />
       <PlayerBlock />
-      <ZedBlock />
-      <button onClick={stageOne}>HeadShot</button>
     </div>
   );
 };

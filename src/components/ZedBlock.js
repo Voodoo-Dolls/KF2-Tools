@@ -6,6 +6,7 @@ import {
   setZedObject,
 } from "../features/zed";
 import { setShotsFired } from "../features/weapon";
+import HealthBar from "./HealthBar";
 import { useState, useEffect } from "react";
 import zeds from "../data/zeds.json";
 
@@ -36,9 +37,14 @@ const ZedBlock = () => {
 
   return (
     <>
-      <h3>Zed</h3>
+      {zedObject && (
+        <>
+          <img src={require(`../images/zeds/${zedName}.webp`)} alt="" />
+          <HealthBar />
+        </>
+      )}
       <select name="" id="" onChange={zedChange}>
-        <option value="null"></option>
+        <option value="null">Select a Zed</option>
         {zedArray.map((zed) => (
           <option value={zed["zed-name"]} key={zed["zed-name"]}>
             {zed["zed-name"]}
