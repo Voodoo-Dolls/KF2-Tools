@@ -29,7 +29,7 @@
             "+2":[127,4]
         },
         "damage-type":"Handgun",
-        "Perks":["Gunslinger"]
+        "Perks":["Gunslinger", "Survivalist"]
     },
     {
         "weapon-name": "FNFAL ACOG",
@@ -38,7 +38,30 @@
             "+1":[80, 9]
         },
         "damage-type":"Rifle",
-        "Perks":["Sharpshooter", "Commando"]
+        "Perks":["Sharpshooter", "Commando", "Survivalist"]
+    },
+    {
+        "weapon-name": "Winchester",
+        "damage/w":{
+            "Base":[80, 5],
+            "+1":[128, 6],
+            "+2":[152, 7],
+            "+3":[184,8],
+            "+4":[200, 9]
+        },
+        "damage-type":"Rifle",
+        "Perks":["Sharpshooter","Gunslinger","Survivalist"]
+    },
+    {
+        "weapon-name":"Crossbow",
+        "damage/w":{
+            "Base":[350, 6],
+            "+1":[420, 7],
+            "+2":[490, 8],
+            "+3":[560, 9]
+        },
+        "damage-type":"Piercing",
+        "Perks":["Sharpshooter", "Survivalist"]
     }
     
 
