@@ -36,25 +36,25 @@ const Perk = () => {
       setPerkObject(value);
     }
     skillObject = {
-      "Lvl-5": 0,
-      "Lvl-10": 0,
-      "Lvl-15": 0,
-      "Lvl-20": 0,
-      "Lvl-25": 0,
+      "Lvl-5": [0, null],
+      "Lvl-10": [0, null],
+      "Lvl-15": [0, null],
+      "Lvl-20": [0, null],
+      "Lvl-25": [0, null],
     };
   }
 
   function handleSkillChange(e) {
     const id = e.target.id;
     const value = e.target.value;
-    skillObject[id] = +value;
+    skillObject[id][0] = +value;
     let total =
-      skillObject["Lvl-5"] +
-      skillObject["Lvl-10"] +
-      skillObject["Lvl-15"] +
-      skillObject["Lvl-20"];
+      skillObject["Lvl-5"][0] +
+      skillObject["Lvl-10"][0] +
+      skillObject["Lvl-15"][0] +
+      skillObject["Lvl-20"][0];
     if (zedTime) {
-      total = total + skillObject["Lvl-25"];
+      total = total + skillObject["Lvl-25"][0];
       dispatch(
         setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
       );
@@ -95,19 +95,19 @@ const Perk = () => {
   useEffect(() => {
     if (perkObject && zedTime) {
       let skills = Object.keys(skillObject)
-        .map((lvl) => skillObject[lvl])
+        .map((lvl) => skillObject[lvl][0])
         .reduce((pv, cv) => pv + cv);
       dispatch(
         setPerkBonus(+perkLevel * perkObject["perk-level-bonus"] + skills)
       );
     } else if (perkObject && !zedTime) {
       let skills = Object.keys(skillObject)
-        .map((lvl) => skillObject[lvl])
+        .map((lvl) => skillObject[lvl][0])
         .reduce((pv, cv) => pv + cv);
       dispatch(
         setPerkBonus(
           +perkLevel * perkObject["perk-level-bonus"] +
-            (skills - skillObject["Lvl-25"])
+            (skills - skillObject["Lvl-25"][0])
         )
       );
     }
@@ -202,11 +202,11 @@ const Perk = () => {
 };
 
 var skillObject = {
-  "Lvl-5": 0,
-  "Lvl-10": 0,
-  "Lvl-15": 0,
-  "Lvl-20": 0,
-  "Lvl-25": 0,
+  "Lvl-5": [0, null],
+  "Lvl-10": [0, null],
+  "Lvl-15": [0, null],
+  "Lvl-20": [0, null],
+  "Lvl-25": [0, null],
 };
 
 export default Perk;
