@@ -1,7 +1,6 @@
-import "./Weapon";
-import Perk from "../components/Perk";
+import Perk from "./Perk";
 import Weapon from "./Weapon";
-import "../styles/PlayerBlock.css";
+import "../../styles/PlayerBlock.css";
 import { useSelector } from "react-redux";
 
 const PlayerBlock = () => {

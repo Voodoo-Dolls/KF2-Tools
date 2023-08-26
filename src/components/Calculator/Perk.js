@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import perks from "../data/perks.json";
+import perks from "../../data/perks.json";
 import { useState, useEffect } from "react";
 import {
   setPerkName,
@@ -8,14 +8,15 @@ import {
   setPerkLevel,
   setZedTime,
   setFocusStacks,
-} from "../features/perk";
-import { setWeaponObject, setShotsFired } from "../features/weapon";
+} from "../../features/perk";
+import { setWeaponObject, setShotsFired } from "../../features/weapon";
 
 const Perk = () => {
   //Redux
   const dispatch = useDispatch();
-  const { perkName, perkLevel, perkWeapons, perkBonus, zedTime, focusStacks } =
-    useSelector((state) => state.perk);
+  const { perkName, perkLevel, perkWeapons, perkBonus, zedTime } = useSelector(
+    (state) => state.perk
+  );
 
   const { weaponName } = useSelector((state) => state.weapon);
 

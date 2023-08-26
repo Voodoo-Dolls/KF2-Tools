@@ -1,25 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PlayerBlock from "./PlayerBlock";
-import ZedBlock from "../components/ZedBlock";
-import HealthBar from "./HealthBar";
-import { setBodyHealth, setHeadHealth } from "../features/zed";
-import { setShotsFired } from "../features/weapon";
-import "../styles/ZedBlock.css";
+import ZedBlock from "./ZedBlock";
+import { setBodyHealth, setHeadHealth } from "../../features/zed";
+import { setShotsFired } from "../../features/weapon";
+import "../../styles/ZedBlock.css";
 
 const DamageCalculator = () => {
   //Redux
-  const { perkName, perkBonus, perkLevel, focusStacks } = useSelector(
+  const { perkName, perkBonus, focusStacks } = useSelector(
     (state) => state.perk
   );
-  const { zedName, headHealth, bodyHealth, zedObject } = useSelector(
+  const { headHealth, bodyHealth, zedObject } = useSelector(
     (state) => state.zed
   );
-  const { weaponName, weaponDamage, weaponUpgrade, weaponType, shotsFired } =
-    useSelector((state) => state.weapon);
+  const { weaponName, weaponDamage, weaponType, shotsFired } = useSelector(
+    (state) => state.weapon
+  );
   const dispatch = useDispatch();
   //States
-  const [weaponTypeMod, setWeaponTypeMod] = useState("0");
+
   const [damageDealt, setDamageDealt] = useState(0);
 
   //Events
@@ -31,6 +31,9 @@ const DamageCalculator = () => {
     if (!weaponName) {
       alert("You Must Provide a Perk and Weapon!");
       return;
+    }
+    if (perkName === "Sharpshooter") {
+      console.log("hello");
     }
     let damage = Math.ceil(weaponDamage * (+perkBonus + 1));
     stageTwo(damage);

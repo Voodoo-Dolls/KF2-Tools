@@ -4,17 +4,15 @@ import {
   setHeadHealth,
   setBodyHealth,
   setZedObject,
-} from "../features/zed";
-import { setShotsFired } from "../features/weapon";
+} from "../../features/zed";
+import { setShotsFired } from "../../features/weapon";
 import HealthBar from "./HealthBar";
-import { useState, useEffect } from "react";
-import zeds from "../data/zeds.json";
+import { useEffect } from "react";
+import zeds from "../../data/zeds.json";
 
 const ZedBlock = (damageDealt) => {
   //Redux
-  const { zedName, headHealth, bodyHealth, zedObject } = useSelector(
-    (state) => state.zed
-  );
+  const { zedName, zedObject } = useSelector((state) => state.zed);
 
   const { shotsFired } = useSelector((state) => state.weapon);
 
@@ -42,7 +40,7 @@ const ZedBlock = (damageDealt) => {
     <>
       {zedObject && (
         <>
-          <img src={require(`../images/zeds/${zedName}.webp`)} alt="" />
+          <img src={require(`../../images/zeds/${zedName}.webp`)} alt="" />
           <HealthBar />
         </>
       )}

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import "../styles/HealthBar.css";
+import "../../styles/HealthBar.css";
 const HealthBar = () => {
   //Redux
-  const { zedName, headHealth, bodyHealth, zedObject } = useSelector(
+  const { headHealth, bodyHealth, zedObject } = useSelector(
     (state) => state.zed
   );
   const [headPercent, setHeadPercent] = useState("100%");

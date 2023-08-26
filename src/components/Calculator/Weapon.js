@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
   setWeaponName,
   setWeaponDamage,
@@ -8,7 +8,7 @@ import {
   setWeaponUpgrade,
   setWeaponObject,
   setShotsFired,
-} from "../features/weapon";
+} from "../../features/weapon";
 const Weapon = () => {
   // Redux
   const { perkName, perkWeapons } = useSelector((state) => state.perk);
@@ -87,7 +87,10 @@ const Weapon = () => {
               </option>
             ))}
           </select>
-          <img src={require(`../images/weapons/${weaponName}.svg`)} alt="gun" />
+          <img
+            src={require(`../../images/weapons/${weaponName}.svg`)}
+            alt="gun"
+          />
 
           <div className="weapon_damage">
             <p>Weapon Damage</p>

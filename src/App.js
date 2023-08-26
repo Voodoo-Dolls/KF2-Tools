@@ -1,6 +1,6 @@
 import "./App.css";
-import "./components/DamageCalculator";
-import DamageCalculator from "./components/DamageCalculator";
+
+import DamageCalculator from "./components/Calculator/DamageCalculator";
 import "@picocss/pico";
 
 function App() {
