@@ -46,8 +46,10 @@ const Perk = () => {
 
   function handleSkillChange(e) {
     const id = e.target.id;
-    const value = e.target.value;
-    skillObject[id][0] = +value;
+    const value = e.target.value.split(",");
+    const skill = e.target;
+    console.log(value);
+    skillObject[id] = +value[0];
     let total =
       skillObject["Lvl-5"][0] +
       skillObject["Lvl-10"][0] +
@@ -173,22 +175,20 @@ const Perk = () => {
                     {lvl}
                   </option>
                   <option
-                    value={perkObject["Skills"][lvl]["left"]["damage-modifier"]}
+                    value={[
+                      perkObject["Skills"][lvl]["left"]["damage-modifier"],
+                      perkObject["Skills"][lvl]["left"]["skill-name"],
+                    ]}
                     key={perkObject["Skills"][lvl]["left"]["skill-name"]}
-                    defaultValue={
-                      perkObject["Skills"][lvl]["left"]["damage-modifier"]
-                    }
                   >
                     {perkObject["Skills"][lvl]["left"]["skill-name"]}
                   </option>
                   <option
-                    value={
-                      perkObject["Skills"][lvl]["right"]["damage-modifier"]
-                    }
+                    value={[
+                      perkObject["Skills"][lvl]["right"]["damage-modifier"],
+                      perkObject["Skills"][lvl]["right"]["skill-name"],
+                    ]}
                     key={perkObject["Skills"][lvl]["right"]["skill-name"]}
-                    defaultValue={
-                      perkObject["Skills"][lvl]["right"]["damage-modifier"]
-                    }
                   >
                     {perkObject["Skills"][lvl]["right"]["skill-name"]}
                   </option>
