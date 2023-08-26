@@ -28,6 +28,10 @@ const DamageCalculator = () => {
   // CALCULATIONS
 
   function stageOne() {
+    if (!weaponName) {
+      alert("You Must Provide a Perk and Weapon!");
+      return;
+    }
     let damage = Math.ceil(weaponDamage * (+perkBonus + 1));
     stageTwo(damage);
   }
@@ -57,7 +61,7 @@ const DamageCalculator = () => {
   useEffect(() => {
     if (headHealth == 0 && zedObject) {
       let calc = damageDealt + zedObject["body-health"] * 0.25;
-      console.log(calc);
+      calc = Math.ceil(calc * (+perkBonus + 1));
       stageTwo(calc);
     }
   }, [headHealth]);
@@ -67,8 +71,12 @@ const DamageCalculator = () => {
       <div className="zed_block_container">
         <ZedBlock damageDealt={damageDealt} />
         <div className="button_container">
-          <button onClick={stageOne}>Head Shot</button>
-          <button>Body Shot (Not Working)</button>
+          {zedObject && (
+            <>
+              <button onClick={stageOne}>Head Shot</button>
+              <button>Body Shot (Not Working)</button>
+            </>
+          )}
         </div>
       </div>
       <PlayerBlock />

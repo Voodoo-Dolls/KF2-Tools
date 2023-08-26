@@ -23,7 +23,11 @@ export const zedSlice = createSlice({
       }
     },
     setBodyHealth: (state, action) => {
-      state.bodyHealth = action.payload;
+      if (action.payload <= 0) {
+        state.bodyHealth = 0;
+      } else {
+        state.bodyHealth = action.payload;
+      }
     },
     setZedObject: (state, action) => {
       state.zedObject = action.payload;

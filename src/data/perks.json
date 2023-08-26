@@ -111,6 +111,62 @@
                 }
             },
             "perk-level-bonus":0.01
+        },
+        {
+            "perk-name":"Commando",
+            "Skills":{
+                "Lvl-5":{
+                    "left":{
+                        "skill-name":"Tactical Reload",
+                        "damage-modifier": 0
+                    },
+                    "right":{
+                        "skill-name":"High Capacity Mags",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-10":{
+                    "left":{
+                        "skill-name":"Fallback (9mm Not Working)",
+                        "damage-modifier":0
+                    },
+                    "right":{
+                        "skill-name": "Impact Rounds",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-15":{
+                    "left":{
+                        "skill-name":"Tenacious",
+                        "damage-modifier": 0
+                    },
+                    "right":{
+                        "skill-name":"Prepared",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-20":{
+                    "left":{
+                        "skill-name":"Hollow Point Rounds",
+                        "damage-modifier": 0
+                    },
+                    "right":{
+                        "skill-name":"Eat Lead",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-25":{
+                    "left":{
+                        "skill-name":"Tactician",
+                        "damage-modifier":0
+                    },
+                    "right":{
+                        "skill-name":"Machine Gunner",
+                        "damage-modifier":0
+                    }
+                }
+            },
+            "perk-level-bonus":0.01
         }
         
     ]
