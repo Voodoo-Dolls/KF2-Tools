@@ -68,11 +68,15 @@ const Perk = () => {
     if (zedTime) {
       total = total + skillObject["Lvl-25"][0];
       dispatch(
-        setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
+        setPerkBonus(
+          total + rackStacks * 0.1 + perkLevel * perkObject["perk-level-bonus"]
+        )
       );
     } else {
       dispatch(
-        setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
+        setPerkBonus(
+          total + rackStacks * 0.1 + perkLevel * perkObject["perk-level-bonus"]
+        )
       );
     }
     dispatch(setSkillArray(skillObject));

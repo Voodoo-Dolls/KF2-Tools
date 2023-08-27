@@ -26,7 +26,7 @@
                 "Lvl-15":{
                     "left":{
                         "skill-name":"Rack 'em Up",
-                        "damage-modifier": 0.5
+                        "damage-modifier": 0
                     },
                     "right":{
                         "skill-name":"Tactical Reload",
@@ -72,7 +72,7 @@
                 "Lvl-10":{
                     "left":{
                         "skill-name": "Rack 'em Up",
-                        "damage-modifier": 0.5
+                        "damage-modifier": 0.0
                     },
                     "right":{
                         "skill-name": "Bone Breaker",

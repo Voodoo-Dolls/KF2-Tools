@@ -8,9 +8,8 @@ import "../../styles/ZedBlock.css";
 
 const DamageCalculator = () => {
   //Redux
-  const { perkName, perkBonus, focusStacks, skillArray } = useSelector(
-    (state) => state.perk
-  );
+  const { perkName, perkBonus, focusStacks, skillArray, rackStacks } =
+    useSelector((state) => state.perk);
   const { headHealth, bodyHealth, zedObject } = useSelector(
     (state) => state.zed
   );
@@ -31,9 +30,6 @@ const DamageCalculator = () => {
     if (!weaponName) {
       alert("You Must Provide a Perk and Weapon!");
       return;
-    }
-    if (perkName === "Sharpshooter") {
-      console.log("hello");
     }
     let damage = Math.ceil(weaponDamage * (+perkBonus + 1));
     stageTwo(damage);
