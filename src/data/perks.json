@@ -148,7 +148,7 @@
                 "Lvl-20":{
                     "left":{
                         "skill-name":"Hollow Point Rounds",
-                        "damage-modifier": 0
+                        "damage-modifier": 0.3
                     },
                     "right":{
                         "skill-name":"Eat Lead",
@@ -162,6 +162,63 @@
                     },
                     "right":{
                         "skill-name":"Machine Gunner",
+                        "damage-modifier":0
+                    }
+                }
+            },
+            "perk-level-bonus":0.01
+        },
+        {
+            "perk-name":"Support",
+            "Skills":{
+                "Lvl-5":{
+                    "left":{
+                        "skill-name":"High Capacity Mags",
+                        "damage-modifier":0,
+                        "high-cap":0.75
+                    },
+                    "right":{
+                        "skill-name":"Tactical Reload",
+                        "damage-modifier":0
+                    }
+                },
+                "Lvl-10":{
+                    "left":{
+                        "skill-name":"Fortitude",
+                        "damage-modifier":0
+                    },
+                    "right":{
+                        "skill-name":"Salvo",
+                        "damage-modifier":0.3
+                    }
+                },
+                "Lvl-15":{
+                    "left":{
+                        "skill-name":"Armor Piercing Shot",
+                        "damage-modifier":0
+                    },
+                    "right":{
+                        "skill-name":"Tight Choke",
+                        "damage-modifier": 0
+                    }
+                },
+                "Lvl-20":{
+                    "left":{
+                        "skill-name":"Resupply Pack",
+                        "damage-modifier":0
+                    },
+                    "right":{
+                        "skill-name":"Concussion Rounds",
+                        "damage-modifier":0
+                    }
+                },
+                "Lvl-25":{
+                    "left":{
+                        "skill-name":"Penetrator",
+                        "damage-modifier":0
+                    },
+                    "right":{
+                        "skill-name":"Barrage",
                         "damage-modifier":0
                     }
                 }

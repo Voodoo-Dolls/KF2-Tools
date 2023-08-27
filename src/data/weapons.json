@@ -56,7 +56,30 @@
             "Perks":["Sharpshooter", "Survivalist"]
         },
         {
-            "weapon-name": "Desert Eagles",
+            "weapon-name":"Dual 1858 Revolvers",
+            "damage/w":{
+                "Base":[50, 4],
+                "+1":[57, 4],
+                "+2":[80, 4],
+                "+3":[97, 6],
+                "+4":[110, 8]
+            },
+            "damage-type":"Handgun",
+            "Perks":["Gunslinger", "Survivalist"]
+        },
+        {
+            "weapon-name":"Dual M1911 Pistols",
+            "damage/w":{
+                "Base":[50, 4],
+                "+1":[70, 4],
+                "+2":[90, 6],
+                "+3":[100, 8]
+            },
+            "damage-type":"Handgun",
+            "Perks":["Gunslinger","Survivalist"]
+        },
+        {
+            "weapon-name": "Dual Desert Eagles",
             "damage/w":{
                 "Base":[91, 4],
                 "+1":[113,6],
@@ -64,6 +87,48 @@
             },
             "damage-type":"Handgun",
             "Perks":["Gunslinger", "Survivalist"]
+        },
+        {
+            "weapon-name":"Dual .500 Magnums",
+            "damage/w":{
+                "Base":[160, 6],
+                "+1":[184, 8]
+            },
+            "damage-type":"Handgun",
+            "Perks":["Gunslinger", "Survivalist"]
+
+        },
+        {
+            "weapon-name":"Dual AF2011-A1s",
+            "damage/w":{
+                "Base":[106, 6],
+                "+1":[119, 8]
+            },
+            "damage-type":"Handgun",
+            "Perks":["Gunslinger"]
+        },
+        {
+            "weapon-name":"AR-15 Varmint Rifle",
+            "damage/w":{
+                "Base":[30, 4],
+                "+1":[36, 5],
+                "+2":[42, 6],
+                "+3":[54, 7],
+                "+4":[60, 8]
+            },
+            "damage-type":"Assault-Rifle",
+            "Perks":["Commando","Survivalist"]
+        },
+        {
+            "weapon-name":"SA80 L85A2 Bullpup",
+            "damage/w":{
+                "Base":[32, 5],
+                "+1":[41.6, 6],
+                "+2":[52, 7],
+                "+3":[59, 8]
+            },
+            "damage-type":"Assault-Rifle",
+            "Perks":["Commando","Survivalist"]
         },
         {
             "weapon-name": "FN FAL ACOG",
