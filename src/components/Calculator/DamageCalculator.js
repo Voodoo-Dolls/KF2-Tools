@@ -78,7 +78,6 @@ const DamageCalculator = () => {
           )}
         </div>
       </div>
-      <p>{skillArray}</p>
       <PlayerBlock />
     </div>
   );

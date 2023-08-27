@@ -141,7 +141,11 @@ const Perk = () => {
         .map((lvl) => skillObject[lvl][0])
         .reduce((pv, cv) => pv + cv);
       dispatch(
-        setPerkBonus(+perkLevel * perkObject["perk-level-bonus"] + skills)
+        setPerkBonus(
+          +perkLevel * perkObject["perk-level-bonus"] +
+            skills +
+            rackStacks * 0.1
+        )
       );
     } else if (perkObject && !zedTime) {
       let skills = Object.keys(skillObject)
@@ -150,11 +154,12 @@ const Perk = () => {
       dispatch(
         setPerkBonus(
           +perkLevel * perkObject["perk-level-bonus"] +
-            (skills - skillObject["Lvl-25"][0])
+            (skills - skillObject["Lvl-25"][0]) +
+            rackStacks * 0.1
         )
       );
     }
-  }, [perkLevel, zedTime, perkObject]);
+  }, [perkLevel, zedTime, perkObject, rackStacks]);
 
   //Reset Rack Stacks
   useEffect(() => {
@@ -172,7 +177,6 @@ const Perk = () => {
     <div className="container">
       {/* PERKS */}
       <h3>Perk</h3>
-      <p>Rack Stacks {rackStacks}</p>
       <div className="perk_container">
         <div className="perkLevels">
           <select name="" id="" onChange={perkChangeHandle}>
