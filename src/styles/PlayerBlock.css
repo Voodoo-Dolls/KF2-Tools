@@ -61,7 +61,8 @@ select {}
 
 }
 
-.focus input {
+.focus input,
+.rack_container input {
     margin-top: -6px;
     transform: scale(0.8);
 }

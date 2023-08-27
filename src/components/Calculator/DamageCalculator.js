@@ -8,7 +8,7 @@ import "../../styles/ZedBlock.css";
 
 const DamageCalculator = () => {
   //Redux
-  const { perkName, perkBonus, focusStacks } = useSelector(
+  const { perkName, perkBonus, focusStacks, skillArray } = useSelector(
     (state) => state.perk
   );
   const { headHealth, bodyHealth, zedObject } = useSelector(
@@ -82,6 +82,7 @@ const DamageCalculator = () => {
           )}
         </div>
       </div>
+      <p>{skillArray}</p>
       <PlayerBlock />
     </div>
   );

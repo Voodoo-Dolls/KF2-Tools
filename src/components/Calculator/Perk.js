@@ -8,15 +8,23 @@ import {
   setPerkLevel,
   setZedTime,
   setFocusStacks,
+  setSkillArray,
+  setRackStacks,
 } from "../../features/perk";
 import { setWeaponObject, setShotsFired } from "../../features/weapon";
 
 const Perk = () => {
   //Redux
   const dispatch = useDispatch();
-  const { perkName, perkLevel, perkWeapons, perkBonus, zedTime } = useSelector(
-    (state) => state.perk
-  );
+  const {
+    perkName,
+    perkLevel,
+    perkWeapons,
+    perkBonus,
+    zedTime,
+    rackStacks,
+    skillArray,
+  } = useSelector((state) => state.perk);
 
   const { weaponName } = useSelector((state) => state.weapon);
 
@@ -42,14 +50,16 @@ const Perk = () => {
       "Lvl-20": [0, null],
       "Lvl-25": [0, null],
     };
+    dispatch(setSkillArray(skillObject));
+    dispatch(setRackStacks(0));
   }
 
   function handleSkillChange(e) {
     const id = e.target.id;
     const value = e.target.value.split(",");
     const skill = e.target;
-    console.log(value);
-    skillObject[id] = +value[0];
+    skillObject[id][0] = +value[0];
+    skillObject[id][1] = value[1];
     let total =
       skillObject["Lvl-5"][0] +
       skillObject["Lvl-10"][0] +
@@ -65,9 +75,31 @@ const Perk = () => {
         setPerkBonus(total + perkLevel * perkObject["perk-level-bonus"])
       );
     }
-
+    dispatch(setSkillArray(skillObject));
     dispatch(setShotsFired(0));
   }
+
+  function rackEmUp(skillArray) {
+    if (skillArray) {
+      if (skillArray.includes("Rack 'em Up")) {
+        return (
+          <div className="rack_container">
+            <label htmlFor="rack">Rack Stacks</label>
+            <input
+              type="number"
+              min={0}
+              max={5}
+              defaultValue={0}
+              onChange={handleRack}
+            />
+          </div>
+        );
+      } else {
+        return;
+      }
+    }
+  }
+
   function handleLvlChange(e) {
     const value = e.target.value;
     dispatch(setPerkLevel(value));
@@ -81,6 +113,11 @@ const Perk = () => {
   function handleFocus(e) {
     const value = e.target.value;
     dispatch(setFocusStacks(value));
+  }
+
+  function handleRack(e) {
+    const value = e.target.value;
+    dispatch(setRackStacks(value));
   }
 
   //Confirms if current weapon is perk related, if not reset.
@@ -115,6 +152,15 @@ const Perk = () => {
     }
   }, [perkLevel, zedTime, perkObject]);
 
+  //Reset Rack Stacks
+  useEffect(() => {
+    if (skillArray) {
+      if (skillArray.includes("Rack 'em Up")) {
+      } else {
+        dispatch(setRackStacks(0));
+      }
+    }
+  }, [skillArray]);
   //Data
   const perkArray = perks["perk-list"];
   // JSX
@@ -122,7 +168,7 @@ const Perk = () => {
     <div className="container">
       {/* PERKS */}
       <h3>Perk</h3>
-
+      <p>Rack Stacks {rackStacks}</p>
       <div className="perk_container">
         <div className="perkLevels">
           <select name="" id="" onChange={perkChangeHandle}>
@@ -161,6 +207,7 @@ const Perk = () => {
               id="focus"
             />
           </div>
+          {rackEmUp(skillArray)}
         </div>
       </div>
       {/* SKILLS */}
@@ -171,7 +218,7 @@ const Perk = () => {
             Object.keys(perkObject["Skills"]).map((lvl) => (
               <div className="skills" key={"skill" + lvl}>
                 <select name="" id={lvl} onChange={handleSkillChange}>
-                  <option value={0} key={perkObject["Skills"]}>
+                  <option value={[0, null]} key={perkObject["Skills"]}>
                     {lvl}
                   </option>
                   <option

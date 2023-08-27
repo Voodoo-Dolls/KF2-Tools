@@ -10,6 +10,7 @@ export const perkSlice = createSlice({
     perkWeapons: null,
     zedTime: false,
     focusStacks: 0,
+    rackStacks: 0,
     skillArray: 0,
   },
   reducers: {
@@ -34,8 +35,17 @@ export const perkSlice = createSlice({
     setFocusStacks: (state, action) => {
       state.focusStacks = action.payload;
     },
+    setRackStacks: (state, action) => {
+      state.rackStacks = action.payload;
+    },
     setSkillArray: (state, action) => {
+      let array = [];
+      let keys = Object.keys(action.payload);
+      keys.forEach((key) => {
+        array.push(action.payload[key][1]);
+      });
       state.skillArray = [];
+      state.skillArray = array;
     },
   },
 });
@@ -49,6 +59,7 @@ export const {
   setPerkWeapons,
   setZedTime,
   setFocusStacks,
+  setRackStacks,
   setSkillArray,
 } = perkSlice.actions;
 
