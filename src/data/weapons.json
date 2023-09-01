@@ -131,6 +131,16 @@
             "Perks":["Commando","Survivalist"]
         },
         {
+            "weapon-name": "Kalashnikov AK-12",
+            "damage/w":{
+                "Base":[40, 6],
+                "+1":[46, 7],
+                "+2":[52, 8]
+            },
+            "damage-type":"Assault-Rifle",
+            "Perks":["Commando","Survivalist"]
+        },
+        {
             "weapon-name": "FN FAL ACOG",
             "damage/w":{
                 "Base":[70, 8],
@@ -138,6 +148,18 @@
             },
             "damage-type":"Rifle",
             "Perks":["Sharpshooter", "Commando", "Survivalist"]
+        },
+        {
+            "weapon-name": "Double Barrel Boomstick",
+            "damage/w":{
+                "Base":[25, 5],
+                "+1":[26, 6],
+                "+2":[27, 7],
+                "+3":[28, 8]
+            },
+            "damage-type":"Shotgun",
+            "pellet-count":20,
+            "Perks":["Support", "Survivalist"]
         }
      ]
     }

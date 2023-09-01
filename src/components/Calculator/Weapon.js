@@ -96,6 +96,9 @@ const Weapon = () => {
             <p>Weapon Damage</p>
             <p className="bigBold">{weaponDamage}</p>
           </div>
+          {weaponObject &&
+            
+          }
         </>
       )}
     </>
