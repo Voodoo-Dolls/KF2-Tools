@@ -91,15 +91,21 @@ const Weapon = () => {
             src={require(`../../images/weapons/${weaponName}.svg`)}
             alt="gun"
           />
-
+            {weaponType!="Shotgun" &&
           <div className="weapon_damage">
             <p>Weapon Damage</p>
             <p className="bigBold">{weaponDamage}</p>
           </div>
+            
+            }
               {weaponType === "Shotgun" &&
                 <div>
+                            <div className="weapon_damage">
+            <p>Weapon Damage</p>
+            <p className="bigBold">{weaponDamage}</p>
+          </div>
                   <p>Pellets Hit:</p>
-                  <input type="number" min={1} max={weaponObject["pellet-count"]} default={weaponObject["pellet-count"]}/>
+                  <input type="number" min={1} max={weaponObject["pellet-count"]} defaultValue={weaponObject["pellet-count"]}/>
                 </div>
               }
         </>
