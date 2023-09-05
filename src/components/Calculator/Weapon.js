@@ -96,9 +96,12 @@ const Weapon = () => {
             <p>Weapon Damage</p>
             <p className="bigBold">{weaponDamage}</p>
           </div>
-          {weaponObject &&
-            
-          }
+              {weaponType === "Shotgun" &&
+                <div>
+                  <p>Pellets Hit:</p>
+                  <input type="number" min={1} max={weaponObject["pellet-count"]} default={weaponObject["pellet-count"]}/>
+                </div>
+              }
         </>
       )}
     </>
