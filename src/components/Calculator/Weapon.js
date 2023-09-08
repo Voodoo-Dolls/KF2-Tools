@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import { useEffect } from "react";
-import {
+import weapon, {
   setWeaponName,
   setWeaponDamage,
   setWeaponType,
@@ -62,6 +62,12 @@ const Weapon = () => {
     dispatch(setShotsFired(0));
   };
 
+  const handlePelletCount = (event) =>{
+    const value = event.target.value;
+      
+    console.log(value);
+  }
+
   return (
     <>
       {/* Checks if Perk is Selected */}
@@ -103,9 +109,10 @@ const Weapon = () => {
                             <div className="weapon_damage">
             <p>Weapon Damage</p>
             <p className="bigBold">{weaponDamage}</p>
+            
           </div>
                   <p>Pellets Hit:</p>
-                  <input type="number" min={1} max={weaponObject["pellet-count"]} defaultValue={weaponObject["pellet-count"]}/>
+                  <input type="number" min={1} max={weaponObject["pellet-count"]} defaultValue={weaponObject["pellet-count"]} onChange={handlePelletCount}/>
                 </div>
               }
         </>
